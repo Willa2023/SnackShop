@@ -7,13 +7,19 @@ import {
   InputLabel,
   TextField,
 } from '@mui/material';
+import { Snack } from '../Models/Snack';
 
 interface AddSnackFormProps {
   open: boolean;
   onClose: () => void;
+  // onAddSnack: (snack: Omit<Snack, 'id'>) => void;
 }
 
-const AddSnackForm: React.FC<AddSnackFormProps> = ({ open, onClose }) => {
+const AddSnackForm: React.FC<AddSnackFormProps> = ({
+  open,
+  onClose,
+  // onAddSnack,
+}) => {
   const handleSubmit = () => {
     console.log('Add snack');
   };

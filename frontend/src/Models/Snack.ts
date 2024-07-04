@@ -3,5 +3,5 @@ export interface Snack {
   name: string;
   costPrice: number;
   sellPrice: number;
-  description: string;
+  brand: string;
 }

@@ -6,6 +6,6 @@ namespace backend.Models
         public required string name { get; set; }
         public decimal costPrice { get; set; }
         public decimal sellPrice { get; set; }
-        public string description { get; set; }
+        public string brand { get; set; }
     }
 }

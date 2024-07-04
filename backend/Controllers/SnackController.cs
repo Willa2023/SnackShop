@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using backend.Models;
 using backend.Repositories;
 
-namespace Controllers
+namespace backend.Controllers
 {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class SnackController : ControllerBase
     {
         private readonly ISnackRepository _snackRepository;
@@ -17,14 +17,14 @@ namespace Controllers
             _snackRepository = snackRepository;
         }
 
-        // GET: Snack
+        // GET: api/Snack
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Snack>>> GetSnacks()
         {
             return Ok(await _snackRepository.GetAllSnacksAsync());
         }
 
-        // GET: Snack/5
+        // GET: api/Snack/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Snack>> GetSnack(int id)
         {
@@ -38,7 +38,7 @@ namespace Controllers
             return snack;
         }
 
-        // PUT: Snack/5
+        // PUT: api/Snack/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSnack(int id, Snack snack)
         {
@@ -52,7 +52,7 @@ namespace Controllers
             return NoContent();
         }
 
-        // POST: Snack
+        // POST: api/Snack
         [HttpPost]
         public async Task<ActionResult<Snack>> PostSnack(Snack snack)
         {
@@ -61,7 +61,7 @@ namespace Controllers
             return CreatedAtAction("GetSnack", new { id = snack.snackId }, snack);
         }
 
-        // DELETE: Snack/5
+        // DELETE: api/Snack/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSnack(int id)
         {
