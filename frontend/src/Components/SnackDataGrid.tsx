@@ -11,7 +11,7 @@ interface SnackDataGridProps {
 const columns: GridColDef[] = [
   { field: 'snackId', headerName: 'ID', width: 90 },
   { field: 'name', headerName: 'Name', width: 150 },
-  { field: 'brand', headerName: 'brand', width: 150 },
+  { field: 'brand', headerName: 'Brand', width: 150 },
   { field: 'costPrice', headerName: 'Cost Price', width: 110 },
   { field: 'sellPrice', headerName: 'Sell Price', width: 110 },
   { field: 'description', headerName: 'Description', width: 230 },
