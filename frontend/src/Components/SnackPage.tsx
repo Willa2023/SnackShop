@@ -3,23 +3,22 @@ import SnackDataGrid from './SnackDataGrid';
 import AddSnackForm from './AddSnackForm';
 import React, { useEffect, useState } from 'react';
 import { Snack } from '../Models/Snack';
-import { getSnacks } from '../Services/SnackService';
+import { createSnack, getSnacks } from '../Services/SnackService';
 
 const SnackPage: React.FC = () => {
   const [snacks, setSnacks] = useState<Snack[]>([]);
-  // const [loading, setLoading] = useState<boolean>(true);
-  // const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const fetchSnacks = async () => {
     try {
       const snacks = await getSnacks();
-      console.log(snacks);
       setSnacks(snacks);
     } catch (err) {
-      console.log('Failed to fetch snacks, check if server is running.');
+      setError('Failed to fetch snacks, check if server is running.');
     } finally {
-      console.log('snacks fetched');
+      setLoading(false);
     }
   };
 
@@ -27,15 +26,15 @@ const SnackPage: React.FC = () => {
     fetchSnacks();
   }, []);
 
-  // const handleAddSnack = async (snack: Omit<Snack, 'id'>) => {
-  //   try {
-  //     const newSnack = await createSnack(snack);
-  //     setSnacks((prev) => [...prev, newSnack]);
-  //     setIsFormOpen(false);
-  //   } catch (err) {
-  //     setError('Failed to add student');
-  //   }
-  // };
+  const handleAddSnack = async (snack: Omit<Snack, 'snackId'>) => {
+    try {
+      const newSnack = await createSnack(snack);
+      setSnacks((prev) => [...prev, newSnack]);
+      setIsFormOpen(false);
+    } catch (err) {
+      setError('Failed to add student');
+    }
+  };
 
   return (
     <>
@@ -53,11 +52,16 @@ const SnackPage: React.FC = () => {
             Add Snack
           </Button>
         </Box>
-        <SnackDataGrid snacks={snacks} setSnacks={setSnacks} />
+        <SnackDataGrid
+          snacks={snacks}
+          setSnacks={setSnacks}
+          loading={loading}
+          error={error}
+        />
         <AddSnackForm
           open={isFormOpen}
           onClose={() => setIsFormOpen(false)}
-          // onAddSnack={handleAddSnack}
+          onAddSnack={handleAddSnack}
         />
       </Box>
     </>

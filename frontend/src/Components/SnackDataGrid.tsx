@@ -4,11 +4,16 @@ import { Snack } from '../Models/Snack';
 interface SnackDataGridProps {
   snacks: Snack[];
   setSnacks: React.Dispatch<React.SetStateAction<Snack[]>>;
-  // loading: boolean;
-  // error: string | null;
+  loading: boolean;
+  error: string | null;
 }
 
-const SnackDataGrid: React.FC<SnackDataGridProps> = ({ snacks, setSnacks }) => {
+const SnackDataGrid: React.FC<SnackDataGridProps> = ({
+  snacks,
+  setSnacks,
+  loading,
+  error,
+}) => {
   const columns: GridColDef[] = [
     { field: 'name', headerName: 'Name', width: 150 },
     { field: 'costPrice', headerName: 'Cost Price', width: 110 },
@@ -25,7 +30,18 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({ snacks, setSnacks }) => {
 
   return (
     <div style={{ height: '70vh', width: '100%' }}>
-      <DataGrid rows={rows} columns={columns}></DataGrid>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        initialState={{
+          pagination: { paginationModel: { pageSize: 10, page: 0 } },
+        }}
+        pageSizeOptions={[5, 10, 20]}
+        pagination
+        paginationMode="client"
+        loading={loading}
+        autoHeight
+      ></DataGrid>
     </div>
   );
 };
