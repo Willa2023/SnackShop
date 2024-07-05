@@ -8,17 +8,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-if (builder.Environment.IsDevelopment())
-{
-    builder.Services.AddDbContext<SnackContext>(options =>
-        options.UseInMemoryDatabase("Snack"));
-}
-else
-{
-    builder.Services.AddDbContext<SnackContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("SnackContext") ?? throw new InvalidOperationException("Connection string 'SnackContext' not found."))
-    );
-}
+builder.Services.AddSqlite<SnackContext>("Data Source=snack.db");
+// if (builder.Environment.IsDevelopment())
+// {
+//     builder.Services.AddDbContext<SnackContext>(options =>
+//         options.UseInMemoryDatabase("Snack"));
+// }
+// else
+// {
+//     builder.Services.AddDbContext<SnackContext>(options =>
+//         options.UseSqlServer(builder.Configuration.GetConnectionString("SnackContext") ?? throw new InvalidOperationException("Connection string 'SnackContext' not found."))
+//     );
+// }
 builder.Services.AddScoped<ISnackRepository, SnackRepository>();
 builder.Services.AddCors(options =>
 {

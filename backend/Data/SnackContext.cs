@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using backend.Models;
 
 namespace backend.Data
 {
@@ -8,7 +9,6 @@ namespace backend.Data
             : base(options)
         {
         }
-
-        public DbSet<Models.Snack> Snack { get; set; } = default!;
+        public DbSet<Snack> Snack { get; set; }
     }
 }
