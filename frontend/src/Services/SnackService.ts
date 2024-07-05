@@ -22,3 +22,19 @@ export const createSnack = async (
   const data = await response.json();
   return data;
 };
+
+export const updateSnack = async (snack: Snack): Promise<void> => {
+  await fetch(`${apiUrl}/${snack.snackId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(snack),
+  });
+};
+
+export const deleteSnack = async (snackId: number): Promise<void> => {
+  await fetch(`${apiUrl}/${snackId}`, {
+    method: 'DELETE',
+  });
+};
