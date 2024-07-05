@@ -19,23 +19,36 @@ const AddSnackForm: React.FC<AddSnackFormProps> = ({
   onClose,
   onAddSnack,
 }) => {
-  const [name, setName] = useState('');
-  const [costPrice, setCostPrice] = useState('');
-  const [sellPrice, setSellPrice] = useState('');
-  const [brand, setBrand] = useState('');
+  const [name, setName] = useState<string>('');
+  const [costPrice, setCostPrice] = useState<number>(0);
+  const [sellPrice, setSellPrice] = useState<number>(0);
+  const [brand, setBrand] = useState<string>('');
 
   const handleSubmit = () => {
     onAddSnack({
       name,
-      costPrice: parseFloat(costPrice),
-      sellPrice: parseFloat(sellPrice),
+      costPrice,
+      sellPrice,
       brand,
     });
     setName('');
-    setCostPrice('');
-    setSellPrice('');
+    setCostPrice(0);
+    setSellPrice(0);
     setBrand('');
     onClose();
+  };
+
+  const handleCostPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(e.target.value);
+    if (!isNaN(value)) {
+      setCostPrice(value);
+    }
+  };
+  const handleSellPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(e.target.value);
+    if (!isNaN(value)) {
+      setSellPrice(value);
+    }
   };
 
   return (
@@ -55,19 +68,19 @@ const AddSnackForm: React.FC<AddSnackFormProps> = ({
           autoFocus
           margin="dense"
           label="Cost Price"
-          type="text"
+          type="number"
           fullWidth
           value={costPrice}
-          onChange={(e) => setCostPrice(e.target.value)}
+          onChange={handleCostPriceChange}
         />
         <TextField
           autoFocus
           margin="dense"
           label="Sell Price"
-          type="text"
+          type="number"
           fullWidth
           value={sellPrice}
-          onChange={(e) => setSellPrice(e.target.value)}
+          onChange={handleSellPriceChange}
         />
         <TextField
           autoFocus
