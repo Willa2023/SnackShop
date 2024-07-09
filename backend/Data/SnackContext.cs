@@ -5,10 +5,11 @@ namespace backend.Data
 {
     public class SnackContext : DbContext
     {
+        public DbSet<Snack> Snacks { get; set; }
+
         public SnackContext(DbContextOptions<SnackContext> options)
             : base(options)
         {
         }
-        public DbSet<Snack> Snacks { get; set; }
     }
 }
