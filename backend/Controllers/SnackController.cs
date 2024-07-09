@@ -42,7 +42,7 @@ namespace backend.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSnack(int id, Snack snack)
         {
-            if (id != snack.snackId)
+            if (id != snack.Id)
             {
                 return BadRequest();
             }
@@ -58,7 +58,7 @@ namespace backend.Controllers
         {
             await _snackRepository.AddSnackAsync(snack);
 
-            return CreatedAtAction("GetSnack", new { id = snack.snackId }, snack);
+            return CreatedAtAction("GetSnack", new { id = snack.Id }, snack);
         }
 
         // DELETE: api/Snack/5

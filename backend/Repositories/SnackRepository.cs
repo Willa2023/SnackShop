@@ -15,17 +15,17 @@ namespace backend.Repositories
 
         public async Task<IEnumerable<Snack>> GetAllSnacksAsync()
         {
-            return await _context.Snack.ToListAsync();
+            return await _context.Snacks.ToListAsync();
         }
 
         public async Task<Snack> GetSnackByIdAsync(int id)
         {
-            return await _context.Snack.FindAsync(id);
+            return await _context.Snacks.FindAsync(id);
         }
 
         public async Task AddSnackAsync(Snack snack)
         {
-            _context.Snack.Add(snack);
+            _context.Snacks.Add(snack);
             await _context.SaveChangesAsync();
         }
 
@@ -37,22 +37,22 @@ namespace backend.Repositories
 
         public async Task DeleteSnackAsync(int id)
         {
-            var snack = await _context.Snack.FindAsync(id);
+            var snack = await _context.Snacks.FindAsync(id);
             if (snack != null)
             {
-                _context.Snack.Remove(snack);
+                _context.Snacks.Remove(snack);
                 await _context.SaveChangesAsync();
             }
         }
 
         public async Task<bool> SnackExistsAsync(int id)
         {
-            return await _context.Snack.AnyAsync(e => e.snackId == id);
+            return await _context.Snacks.AnyAsync(e => e.Id == id);
         }
 
         public async Task BulkAddSnacksAsync(IEnumerable<Snack> snacks)
         {
-            await _context.Snack.AddRangeAsync(snacks);
+            await _context.Snacks.AddRangeAsync(snacks);
             await _context.SaveChangesAsync();
         }
 

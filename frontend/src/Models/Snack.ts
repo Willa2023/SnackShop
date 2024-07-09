@@ -1,7 +1,7 @@
 export interface Snack {
-  snackId: number;
-  name: string;
-  costPrice: number;
-  sellPrice: number;
-  brand: string;
+  Id: number;
+  Name: string;
+  CostPrice: number;
+  SellPrice: number;
+  Brand: string;
 }

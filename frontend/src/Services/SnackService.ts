@@ -9,9 +9,7 @@ export const getSnacks = async (): Promise<Snack[]> => {
   return data;
 };
 
-export const createSnack = async (
-  snack: Omit<Snack, 'snackId'>,
-): Promise<Snack> => {
+export const createSnack = async (snack: Omit<Snack, 'Id'>): Promise<Snack> => {
   const response = await fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -24,7 +22,7 @@ export const createSnack = async (
 };
 
 export const updateSnack = async (snack: Snack): Promise<void> => {
-  await fetch(`${apiUrl}/${snack.snackId}`, {
+  await fetch(`${apiUrl}/${snack.Id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

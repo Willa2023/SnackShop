@@ -9,6 +9,6 @@ namespace backend.Data
             : base(options)
         {
         }
-        public DbSet<Snack> Snack { get; set; }
+        public DbSet<Snack> Snacks { get; set; }
     }
 }

@@ -11,7 +11,7 @@ import { Snack } from '../Models/Snack';
 interface AddSnackFormProps {
   open: boolean;
   onClose: () => void;
-  onAddSnack: (snack: Omit<Snack, 'snackId'>) => void;
+  onAddSnack: (snack: Omit<Snack, 'Id'>) => void;
 }
 
 const AddSnackForm: React.FC<AddSnackFormProps> = ({
@@ -26,10 +26,10 @@ const AddSnackForm: React.FC<AddSnackFormProps> = ({
 
   const handleSubmit = () => {
     onAddSnack({
-      name,
-      costPrice,
-      sellPrice,
-      brand,
+      Name: name,
+      CostPrice: costPrice,
+      SellPrice: sellPrice,
+      Brand: brand,
     });
     setName('');
     setCostPrice(0);
