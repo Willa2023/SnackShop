@@ -4,9 +4,9 @@ using backend.Repositories;
 
 public class CartRepository : ICartRepository
 {
-    private readonly SnackContext _context;
+    private readonly SnackShopContext _context;
 
-    public CartRepository(SnackContext context)
+    public CartRepository(SnackShopContext context)
     {
         _context = context;
     }

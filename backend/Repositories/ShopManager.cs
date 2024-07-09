@@ -4,9 +4,9 @@ using backend.Repositories;
 
 public class ShopManager : IShopManager
 {
-    private readonly SnackContext _context;
+    private readonly SnackShopContext _context;
 
-    public ShopManager(SnackContext context)
+    public ShopManager(SnackShopContext context)
     {
         _context = context;
     }

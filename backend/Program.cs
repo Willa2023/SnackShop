@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddSqlite<SnackContext>("Data Source=snack.db");
+builder.Services.AddSqlite<SnackShopContext>("Data Source=snackshop.db");
 // if (builder.Environment.IsDevelopment())
 // {
 //     builder.Services.AddDbContext<SnackContext>(options =>

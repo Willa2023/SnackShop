@@ -9,7 +9,7 @@ using backend.Data;
 
 namespace backend.Migrations
 {
-    [DbContext(typeof(SnackContext))]
+    [DbContext(typeof(SnackShopContext))]
     [Migration("20240709035556_RenameSnackFields")]
     partial class RenameSnackFields
     {

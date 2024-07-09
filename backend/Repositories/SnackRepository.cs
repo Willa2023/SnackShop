@@ -6,9 +6,9 @@ namespace backend.Repositories
 {
     public class SnackRepository : ISnackRepository
     {
-        private readonly SnackContext _context;
+        private readonly SnackShopContext _context;
 
-        public SnackRepository(SnackContext context)
+        public SnackRepository(SnackShopContext context)
         {
             _context = context;
         }
