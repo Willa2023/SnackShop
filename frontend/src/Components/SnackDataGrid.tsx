@@ -25,12 +25,12 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
   const handleEdit = async (newRow: GridRowModel) => {
     const updatedSnack: Snack = {
       ...newRow,
-      Id: newRow.id,
+      id: newRow.id,
     } as Snack;
     try {
       await updateSnack(updatedSnack);
       const newSnacks = snacks.map((snack) =>
-        snack.Id === updatedSnack.Id ? updatedSnack : snack,
+        snack.id === updatedSnack.id ? updatedSnack : snack,
       );
       setSnacks(newSnacks);
       return updatedSnack;
@@ -40,12 +40,12 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
     }
   };
 
-  const handleDelete = async (Id: number) => {
+  const handleDelete = async (id: number) => {
     const confirmDelete = window.confirm('Are you sure you want to delete?');
     if (!confirmDelete) return;
     try {
-      await deleteSnack(Id);
-      setSnacks((prev) => prev.filter((snack) => snack.Id !== Id));
+      await deleteSnack(id);
+      setSnacks((prev) => prev.filter((snack) => snack.id !== id));
     } catch (err) {
       console.error(err);
     }
@@ -81,11 +81,11 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
     },
   ];
   const rows: GridRowsProp = snacks.map((snack) => ({
-    id: snack.Id,
-    name: snack.Name,
-    costPrice: snack.CostPrice,
-    sellPrice: snack.SellPrice,
-    brand: snack.Brand,
+    id: snack.id,
+    name: snack.name,
+    costPrice: snack.costPrice,
+    sellPrice: snack.sellPrice,
+    brand: snack.brand,
   }));
 
   return (

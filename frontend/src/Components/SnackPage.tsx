@@ -26,7 +26,7 @@ const SnackPage: React.FC = () => {
     fetchSnacks();
   }, []);
 
-  const handleAddSnack = async (snack: Omit<Snack, 'snackId'>) => {
+  const handleAddSnack = async (snack: Omit<Snack, 'id'>) => {
     try {
       const newSnack = await createSnack(snack);
       setSnacks((prev) => [...prev, newSnack]);
