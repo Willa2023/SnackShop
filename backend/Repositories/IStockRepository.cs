@@ -3,12 +3,9 @@ using backend.Models;
 
 namespace backend.Repositories
 {
-    public interface IShopManager
+    public interface IStockRepository
     {
-
         Task AddStockAsync(Stock stock);
-        Task AddSellAsync(Sell sell);
-
         // Task<IEnumerable<Stock>> GetAllStocksAsync();
         // Task<Stock> GetStockBySnackIdAsync(int id);
         // Task UpdateStockAsync(Stock stock);

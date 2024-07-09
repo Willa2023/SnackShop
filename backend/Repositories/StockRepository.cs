@@ -2,11 +2,11 @@ using backend.Data;
 using backend.Models;
 using backend.Repositories;
 
-public class ShopManager : IShopManager
+public class StockRepository : IStockRepository
 {
     private readonly SnackShopContext _context;
 
-    public ShopManager(SnackShopContext context)
+    public StockRepository(SnackShopContext context)
     {
         _context = context;
     }
@@ -17,9 +17,4 @@ public class ShopManager : IShopManager
         await _context.SaveChangesAsync();
     }
 
-    public async Task AddSellAsync(Sell sell)
-    {
-        _context.Sells.Add(sell);
-        await _context.SaveChangesAsync();
-    }
 }
