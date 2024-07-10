@@ -2,12 +2,12 @@ import './App.css';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AppBarBox from './Components/AppBarBox';
 import SideBar from './Components/SideBar';
-import SnackPage from './Components/Snack/SnackPage';
+import SnackPage from './Pages/SnackPage';
 import { SettingsProvider } from './Contexts/SettingsContext';
-import Settings from './Components/Settings';
-import Home from './Components/Home';
-import Manage from './Components/Manage/ManagePage';
-import StockSellPage from './Components/StockSell/StockSellPage';
+import Settings from './Pages/Settings';
+import Home from './Pages/Home';
+import StockPage from './Pages/StockPage';
+import SellPage from './Pages/SellPage';
 
 const AppContent: React.FC = () => {
   return (
@@ -16,9 +16,9 @@ const AppContent: React.FC = () => {
       <SideBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/manage" element={<Manage />} />
         <Route path="/snack" element={<SnackPage />} />
-        <Route path="/stockSell" element={<StockSellPage />} />
+        <Route path="/stock" element={<StockPage />} />
+        <Route path="/sell" element={<SellPage />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
     </>

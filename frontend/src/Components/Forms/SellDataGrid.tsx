@@ -1,5 +1,7 @@
+import React from 'react';
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
 import { Sell } from '../../Models/SnackStockSell';
+// import { Bar } from 'react-chartjs-2';
 
 interface SellDataGridProps {
   sells: Sell[];

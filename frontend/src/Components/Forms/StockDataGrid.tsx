@@ -1,5 +1,8 @@
+import { useState, useEffect } from 'react';
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
 import { Stock } from '../../Models/SnackStockSell';
+import { BarChart } from '@mui/x-charts/BarChart';
+// import { Bar } from 'react-chartjs-2';
 
 interface StockDataGridProps {
   stocks: Stock[];
@@ -64,6 +67,25 @@ const StockDataGrid: React.FC<StockDataGridProps> = ({ stocks }) => {
     totalProfit: stock.totalProfit,
   }));
 
+  const [chartData, setChartData] = useState<any>({
+    xAxis: [],
+    series: [],
+  });
+  useEffect(() => {
+    // Prepare xAxis (labels) and series (data)
+    const labels = rows.map((row) => row.snackName);
+    const costData = rows.map((row) => row.totalCost);
+    const sellData = rows.map((row) => row.totalSell);
+
+    setChartData({
+      xAxis: [{ scaleType: 'band', data: labels }],
+      series: [
+        { data: costData, label: 'Cost' },
+        { data: sellData, label: 'Sell' },
+      ],
+    });
+  }, [rows]);
+
   return (
     <>
       <DataGrid
@@ -77,6 +99,14 @@ const StockDataGrid: React.FC<StockDataGridProps> = ({ stocks }) => {
         paginationMode="client"
         autoHeight
       ></DataGrid>
+      <div style={{ marginTop: '20px' }}>
+        <BarChart
+          xAxis={chartData.xAxis}
+          series={chartData.series}
+          width={500}
+          height={300}
+        />
+      </div>
     </>
   );
 };

@@ -9,6 +9,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { useSettings } from '../Contexts/SettingsContext';
 import { NavLink } from 'react-router-dom';
+import { JoinRight } from '@mui/icons-material';
 
 const AppBarBox: React.FC = () => {
   const { toggleDrawer } = useSettings();
@@ -27,11 +28,43 @@ const AppBarBox: React.FC = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Snack Shop
-          </Typography>
-          <Button component={NavLink} to="/" color="inherit">
+          </Typography> */}
+          <Button
+            component={NavLink}
+            to="/"
+            color="inherit"
+            style={{ paddingRight: '30px' }}
+          >
             Home
+          </Button>
+          <Button
+            component={NavLink}
+            to="/snack"
+            color="inherit"
+            style={{ paddingRight: '30px' }}
+          >
+            Snack
+          </Button>
+          <Button
+            component={NavLink}
+            to="/stock"
+            color="inherit"
+            style={{ paddingRight: '30px' }}
+          >
+            Stock
+          </Button>
+          <Button
+            component={NavLink}
+            to="/sell"
+            color="inherit"
+            style={{ paddingRight: '30px' }}
+          >
+            Sell
+          </Button>
+          <Button color="inherit" sx={{ marginLeft: 'auto' }}>
+            Login
           </Button>
         </Toolbar>
       </AppBar>
