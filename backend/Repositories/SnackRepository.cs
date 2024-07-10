@@ -20,7 +20,7 @@ namespace backend.Repositories
 
         public async Task<Snack> GetSnackByIdAsync(int id)
         {
-            return await _context.Snacks.FindAsync(id);
+            return await _context.Snacks.FindAsync(id) ?? throw new Exception("Snack not found");
         }
 
         public async Task AddSnackAsync(Snack snack)

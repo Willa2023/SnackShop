@@ -16,12 +16,33 @@ namespace backend.Controllers
             _stockRepository = stockRepository;
         }
 
-        // POST: api/Stock/AddStock
-        [HttpPost("AddStock")]
-        public async Task<ActionResult<Stock>> AddStock(Stock stock)
+        // GET: api/Stock
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Stock>>> GetStocks()
         {
-            await _stockRepository.AddStockAsync(stock);
-            return CreatedAtAction("AddStock", new { id = stock.Id }, stock);
+            return Ok(await _stockRepository.GetAllStocksAsync());
+        }
+
+        // GET: api/Stock/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Stock>> GetStockBySnackId(int id)
+        {
+            var stock = await _stockRepository.GetStockBySnackIdAsync(id);
+
+            if (stock == null)
+            {
+                return NotFound();
+            }
+
+            return stock;
+        }
+
+        // POST: api/Stock
+        [HttpPost("{snackId}/{quantity}")]
+        public async Task<ActionResult<Stock>> AddStock(int snackId, int quantity)
+        {
+            await _stockRepository.AddStockAsync(snackId, quantity);
+            return CreatedAtAction("AddStock", new { id = snackId }, new { snackId, quantity });
         }
     }
 }
