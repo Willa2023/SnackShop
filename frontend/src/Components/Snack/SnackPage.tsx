@@ -2,7 +2,7 @@ import { Box, Button, Toolbar, Typography } from '@mui/material';
 import SnackDataGrid from './SnackDataGrid';
 import AddSnackForm from './AddSnackForm';
 import React, { useEffect, useState } from 'react';
-import { Snack } from '../../Models/Snack';
+import { Snack } from '../../Models/SnackStockSell';
 import { createSnack, getSnacks } from '../../Services/SnackService';
 
 const SnackPage: React.FC = () => {
