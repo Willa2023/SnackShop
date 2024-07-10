@@ -24,10 +24,10 @@ namespace backend.Controllers
         }
 
         // GET: api/Sell/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Sell>> GetSellBySnackId(int id)
+        [HttpGet("{snackId}")]
+        public async Task<ActionResult<Sell>> GetSellBySnackId(int snackId)
         {
-            var sell = await _sellRepository.GetSellBySnackIdAsync(id);
+            var sell = await _sellRepository.GetSellBySnackIdAsync(snackId);
 
             if (sell == null)
             {
@@ -38,7 +38,7 @@ namespace backend.Controllers
         }
 
         // POST: api/Sell
-        [HttpPost("{id}/{quantity}")]
+        [HttpPost("{snackId}/{quantity}")]
         public async Task<ActionResult<Sell>> AddSell(int snackId, int quantity)
         {
             var sell = await _sellRepository.AddSellAsync(snackId, quantity);

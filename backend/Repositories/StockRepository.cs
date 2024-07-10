@@ -14,12 +14,12 @@ public class StockRepository : IStockRepository
 
     public async Task<IEnumerable<Stock>> GetAllStocksAsync()
     {
-        return await _context.Stocks.ToListAsync();
+        return await _context.Stocks.Include(s => s.Snack).ToListAsync();
     }
 
     public async Task<Stock> GetStockBySnackIdAsync(int snackId)
     {
-        return await _context.Stocks.FirstOrDefaultAsync(s => s.SnackId == snackId) ?? throw new Exception("Stock not found");
+        return await _context.Stocks.Include(s => s.Snack).FirstOrDefaultAsync(s => s.SnackId == snackId) ?? throw new Exception("Stock not found");
     }
 
     public async Task<Stock> AddStockAsync(int snackId, int quantity)

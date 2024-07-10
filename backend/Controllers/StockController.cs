@@ -24,7 +24,7 @@ namespace backend.Controllers
         }
 
         // GET: api/Stock/5
-        [HttpGet("{id}")]
+        [HttpGet("{snackId}")]
         public async Task<ActionResult<Stock>> GetStockBySnackId(int snackId)
         {
             var stock = await _stockRepository.GetStockBySnackIdAsync(snackId);

@@ -15,12 +15,12 @@ namespace backend.Repositories
 
         public async Task<IEnumerable<Sell>> GetAllSellsAsync()
         {
-            return await _context.Sells.ToListAsync();
+            return await _context.Sells.Include(s => s.Snack).ToListAsync();
         }
 
         public async Task<Sell> GetSellBySnackIdAsync(int id)
         {
-            return await _context.Sells.FirstOrDefaultAsync(s => s.SnackId == id) ?? throw new Exception("Sell not found");
+            return await _context.Sells.Include(s => s.Snack).FirstOrDefaultAsync(s => s.SnackId == id) ?? throw new Exception("Sell not found");
         }
 
         public async Task<Sell> AddSellAsync(int id, int quantity)

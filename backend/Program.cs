@@ -9,18 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSqlite<SnackShopContext>("Data Source=snackshop.db");
-// if (builder.Environment.IsDevelopment())
-// {
-//     builder.Services.AddDbContext<SnackContext>(options =>
-//         options.UseInMemoryDatabase("Snack"));
-// }
-// else
-// {
-//     builder.Services.AddDbContext<SnackContext>(options =>
-//         options.UseSqlServer(builder.Configuration.GetConnectionString("SnackContext") ?? throw new InvalidOperationException("Connection string 'SnackContext' not found."))
-//     );
-// }
+
 builder.Services.AddScoped<ISnackRepository, SnackRepository>();
+builder.Services.AddScoped<IStockRepository, StockRepository>();
+builder.Services.AddScoped<ISellRepository, SellRepository>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
