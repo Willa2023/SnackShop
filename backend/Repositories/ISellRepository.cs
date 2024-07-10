@@ -6,6 +6,6 @@ namespace backend.Repositories
     {
         Task<IEnumerable<Sell>> GetAllSellsAsync();
         Task<Sell> GetSellBySnackIdAsync(int id);
-        Task AddSellAsync(int id, int quantity);
+        Task<Sell> AddSellAsync(int id, int quantity);
     }
 }

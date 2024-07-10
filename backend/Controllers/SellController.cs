@@ -16,12 +16,34 @@ namespace backend.Controllers
             _sellRepository = sellRepository;
         }
 
-        // POST: api/Sell/AddSell
-        [HttpPost("AddSell")]
-        public async Task<ActionResult<Sell>> AddSell(Sell sell)
+        // GET: api/Sell
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Sell>>> GetSells()
         {
-            await _sellRepository.AddSellAsync(sell);
-            return CreatedAtAction("AddSell", new { id = sell.Id }, sell);
+            return Ok(await _sellRepository.GetAllSellsAsync());
         }
+
+        // GET: api/Sell/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Sell>> GetSellBySnackId(int id)
+        {
+            var sell = await _sellRepository.GetSellBySnackIdAsync(id);
+
+            if (sell == null)
+            {
+                return NotFound();
+            }
+
+            return sell;
+        }
+
+        // POST: api/Sell
+        [HttpPost("{id}/{quantity}")]
+        public async Task<ActionResult<Sell>> AddSell(int snackId, int quantity)
+        {
+            var sell = await _sellRepository.AddSellAsync(snackId, quantity);
+            return CreatedAtAction(nameof(GetSellBySnackId), new { snackId = sell.SnackId }, sell);
+        }
+
     }
 }

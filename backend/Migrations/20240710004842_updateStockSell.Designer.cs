@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backend.Data;
 
@@ -10,9 +11,11 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(SnackShopContext))]
-    partial class SnackContextModelSnapshot : ModelSnapshot
+    [Migration("20240710004842_updateStockSell")]
+    partial class updateStockSell
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
@@ -28,7 +31,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Carts");
+                    b.ToTable("Cart", (string)null);
                 });
 
             modelBuilder.Entity("backend.Models.CartItem", b =>
@@ -52,26 +55,26 @@ namespace backend.Migrations
 
                     b.HasIndex("SnackId");
 
-                    b.ToTable("CartItems");
+                    b.ToTable("CartItem", (string)null);
                 });
 
             modelBuilder.Entity("backend.Models.Sell", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SnackId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("SnackId")
+                    b.Property<int>("SnackId1")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("SnackId");
 
-                    b.HasIndex("SnackId");
+                    b.HasIndex("SnackId1");
 
-                    b.ToTable("Sells");
+                    b.ToTable("Sell", (string)null);
                 });
 
             modelBuilder.Entity("backend.Models.Snack", b =>
@@ -95,26 +98,26 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Snacks");
+                    b.ToTable("Snack", (string)null);
                 });
 
             modelBuilder.Entity("backend.Models.Stock", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SnackId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("SnackId")
+                    b.Property<int>("SnackId1")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("SnackId");
 
-                    b.HasIndex("SnackId");
+                    b.HasIndex("SnackId1");
 
-                    b.ToTable("Stocks");
+                    b.ToTable("Stock", (string)null);
                 });
 
             modelBuilder.Entity("backend.Models.CartItem", b =>
@@ -136,7 +139,7 @@ namespace backend.Migrations
                 {
                     b.HasOne("backend.Models.Snack", "Snack")
                         .WithMany()
-                        .HasForeignKey("SnackId")
+                        .HasForeignKey("SnackId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -147,7 +150,7 @@ namespace backend.Migrations
                 {
                     b.HasOne("backend.Models.Snack", "Snack")
                         .WithMany()
-                        .HasForeignKey("SnackId")
+                        .HasForeignKey("SnackId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -25,9 +25,9 @@ namespace backend.Controllers
 
         // GET: api/Stock/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Stock>> GetStockBySnackId(int id)
+        public async Task<ActionResult<Stock>> GetStockBySnackId(int snackId)
         {
-            var stock = await _stockRepository.GetStockBySnackIdAsync(id);
+            var stock = await _stockRepository.GetStockBySnackIdAsync(snackId);
 
             if (stock == null)
             {
@@ -41,8 +41,8 @@ namespace backend.Controllers
         [HttpPost("{snackId}/{quantity}")]
         public async Task<ActionResult<Stock>> AddStock(int snackId, int quantity)
         {
-            await _stockRepository.AddStockAsync(snackId, quantity);
-            return CreatedAtAction("AddStock", new { id = snackId }, new { snackId, quantity });
+            var stock = await _stockRepository.AddStockAsync(snackId, quantity);
+            return CreatedAtAction(nameof(GetStockBySnackId), new { snackId = stock.SnackId }, stock);
         }
     }
 }

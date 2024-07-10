@@ -6,8 +6,8 @@ namespace backend.Repositories
     public interface IStockRepository
     {
         Task<IEnumerable<Stock>> GetAllStocksAsync();
-        Task<Stock> GetStockBySnackIdAsync(int id);
-        Task AddStockAsync(int id, int quantity);
+        Task<Stock> GetStockBySnackIdAsync(int snackId);
+        Task<Stock> AddStockAsync(int snackId, int quantity);
 
     }
 }

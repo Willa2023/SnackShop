@@ -17,21 +17,28 @@ public class StockRepository : IStockRepository
         return await _context.Stocks.ToListAsync();
     }
 
-    public async Task<Stock> GetStockBySnackIdAsync(int id)
+    public async Task<Stock> GetStockBySnackIdAsync(int snackId)
     {
-        return await _context.Stocks.FirstOrDefaultAsync(s => s.SnackId == id) ?? throw new Exception("Stock not found");
+        return await _context.Stocks.FirstOrDefaultAsync(s => s.SnackId == snackId) ?? throw new Exception("Stock not found");
     }
 
-    public async Task AddStockAsync(int id, int quantity)
+    public async Task<Stock> AddStockAsync(int snackId, int quantity)
     {
+        var snack = await _context.Snacks.FindAsync(snackId);
+        if (snack == null)
+        {
+            throw new Exception("Snack not found");
+        }
         var stock = new Stock
         {
-            SnackId = id,
+            SnackId = snackId,
             Quantity = quantity,
-            Snack = await _context.Snacks.FindAsync(id) ?? throw new Exception("Snack not found")
+            Snack = snack
         };
         _context.Stocks.Add(stock);
         await _context.SaveChangesAsync();
+
+        return stock;
     }
 
 
