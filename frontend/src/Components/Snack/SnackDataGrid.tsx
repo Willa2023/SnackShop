@@ -6,8 +6,8 @@ import {
   GridRowsProp,
 } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Snack } from '../Models/Snack';
-import { deleteSnack, updateSnack } from '../Services/SnackService';
+import { Snack } from '../../Models/Snack';
+import { deleteSnack, updateSnack } from '../../Services/SnackService';
 
 interface SnackDataGridProps {
   snacks: Snack[];

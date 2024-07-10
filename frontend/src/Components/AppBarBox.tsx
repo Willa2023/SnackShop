@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useSettings } from '../Contexts/SettingsContext';
+import { NavLink } from 'react-router-dom';
 
 const AppBarBox: React.FC = () => {
   const { toggleDrawer } = useSettings();
@@ -29,7 +30,9 @@ const AppBarBox: React.FC = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Snack Shop
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button component={NavLink} to="/" color="inherit">
+            Home
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
