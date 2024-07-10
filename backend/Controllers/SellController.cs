@@ -20,7 +20,18 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Sell>>> GetSells()
         {
-            return Ok(await _sellRepository.GetAllSellsAsync());
+            var sells = await _sellRepository.GetAllSellsAsync();
+            var sellDtos = sells.Select(sell => new SellDto
+            {
+                Id = sell.Id,
+                SnackId = sell.SnackId,
+                Snack = sell.Snack,
+                Quantity = sell.Quantity,
+                Date = sell.Date.ToString("yyyy-MM-dd"),
+                StockId = sell.StockId,
+                TotalPrice = sell.TotalPrice
+            }).ToList();
+            return Ok(sellDtos);
         }
 
         // GET: api/Sell/5
@@ -32,7 +43,17 @@ namespace backend.Controllers
             {
                 return NotFound();
             }
-            return Ok(sell);
+            var sellDto = new SellDto
+            {
+                Id = sell.Id,
+                SnackId = sell.SnackId,
+                Snack = sell.Snack,
+                Quantity = sell.Quantity,
+                Date = sell.Date.ToString("yyyy-MM-dd"),
+                StockId = sell.StockId,
+                TotalPrice = sell.TotalPrice
+            };
+            return Ok(sellDto);
         }
 
         // POST: api/Sell

@@ -1,12 +1,14 @@
 import { Box, Button, Toolbar, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import StockSellDataGrid from './StockSellDataGrid';
+import StockDataGrid from './StockDataGrid';
 import { Stock, Sell } from '../../Models/SnackStockSell';
 import { getStocks } from '../../Services/StockService';
+import { getSells } from '../../Services/SellService';
+import SellDataGrid from './SellDataGrid';
 
 const StockSellPage: React.FC = () => {
   const [stocks, setStocks] = useState<Stock[]>([]);
-  // const [sells, setSells] = useState<Sell[]>([]);
+  const [sells, setSells] = useState<Sell[]>([]);
   // const [isFormOpen, setIsFormOpen] = useState(false);
 
   const fetchStocks = async () => {
@@ -18,16 +20,25 @@ const StockSellPage: React.FC = () => {
     }
   };
 
+  const fetchSells = async () => {
+    try {
+      const sells = await getSells();
+      setSells(sells);
+    } catch (err) {
+      console.error('Failed to fetch sells, check if server is running.');
+    }
+  };
+
   useEffect(() => {
     fetchStocks();
+    fetchSells();
   }, []);
 
   return (
     <>
-      <Box mb={2}>
-        <Toolbar></Toolbar>
+      <Box mt={8}>
         <Typography variant="h6" gutterBottom>
-          Stock and Sell List
+          Stock List
         </Typography>
         <Box display="flex" gap={2} mb={2}>
           <Button
@@ -37,6 +48,14 @@ const StockSellPage: React.FC = () => {
           >
             Add Stock
           </Button>
+        </Box>
+        <StockDataGrid stocks={stocks} />
+      </Box>
+      <Box mt={8}>
+        <Typography variant="h6" gutterBottom>
+          Sell List
+        </Typography>
+        <Box display="flex" gap={2} mb={2}>
           <Button
             variant="contained"
             color="primary"
@@ -45,12 +64,19 @@ const StockSellPage: React.FC = () => {
             Add Sell
           </Button>
         </Box>
-        <Box display="flex" gap={2} mb={2}>
-          <StockSellDataGrid stocks={stocks} />
-        </Box>
+        <SellDataGrid sells={sells} />
       </Box>
     </>
   );
 };
 
 export default StockSellPage;
+{
+  /* <Button
+variant="contained"
+color="primary"
+// onClick={() => setIsFormOpen(true)}
+>
+Add Sell
+</Button> */
+}

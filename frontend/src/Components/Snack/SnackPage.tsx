@@ -38,8 +38,7 @@ const SnackPage: React.FC = () => {
 
   return (
     <>
-      <Box mb={2}>
-        <Toolbar></Toolbar>
+      <Box mb={2} mt={10}>
         <Typography variant="h6" gutterBottom>
           Snack List
         </Typography>

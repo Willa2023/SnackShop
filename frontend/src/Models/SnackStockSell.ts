@@ -23,5 +23,5 @@ export interface Sell {
   quantity: number;
   date: Date;
   stockId: number;
-  stock: Stock;
+  totalPrice: number;
 }
