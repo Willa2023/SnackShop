@@ -28,13 +28,11 @@ namespace backend.Controllers
         public async Task<ActionResult<Sell>> GetSellBySnackId(int snackId)
         {
             var sell = await _sellRepository.GetSellBySnackIdAsync(snackId);
-
             if (sell == null)
             {
                 return NotFound();
             }
-
-            return sell;
+            return Ok(sell);
         }
 
         // POST: api/Sell

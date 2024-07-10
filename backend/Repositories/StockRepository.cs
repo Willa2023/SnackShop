@@ -14,12 +14,23 @@ public class StockRepository : IStockRepository
 
     public async Task<IEnumerable<Stock>> GetAllStocksAsync()
     {
-        return await _context.Stocks.Include(s => s.Snack).ToListAsync();
+        var stocks = await _context.Stocks.Include(s => s.Snack).Include(s => s.Sells).ToListAsync();
+        foreach (var stock in stocks)
+        {
+            stock.SoldQuantity = stock.Sells.Sum(s => s.Quantity);
+        }
+        return stocks;
     }
 
     public async Task<Stock> GetStockBySnackIdAsync(int snackId)
     {
-        return await _context.Stocks.Include(s => s.Snack).FirstOrDefaultAsync(s => s.SnackId == snackId) ?? throw new Exception("Stock not found");
+        var stock = await _context.Stocks.Include(s => s.Snack).Include(s => s.Sells).FirstOrDefaultAsync(s => s.SnackId == snackId) ?? throw new Exception("Stock not found");
+        if (stock == null)
+        {
+            throw new Exception("Stock not found");
+        }
+        stock.SoldQuantity = stock.Sells.Sum(s => s.Quantity);
+        return stock;
     }
 
     public async Task<Stock> AddStockAsync(int snackId, int quantity)
@@ -29,16 +40,26 @@ public class StockRepository : IStockRepository
         {
             throw new Exception("Snack not found");
         }
-        var stock = new Stock
+        var existingStock = await _context.Stocks.Include(s => s.Snack).FirstOrDefaultAsync(s => s.SnackId == snackId);
+        if (existingStock != null)
         {
-            SnackId = snackId,
-            Quantity = quantity,
-            Snack = snack
-        };
-        _context.Stocks.Add(stock);
-        await _context.SaveChangesAsync();
-
-        return stock;
+            existingStock.TotalStock += quantity;
+            _context.Stocks.Update(existingStock);
+            await _context.SaveChangesAsync();
+            return existingStock;
+        }
+        else
+        {
+            var stock = new Stock
+            {
+                SnackId = snackId,
+                TotalStock = quantity,
+                Snack = snack
+            };
+            _context.Stocks.Add(stock);
+            await _context.SaveChangesAsync();
+            return stock;
+        }
     }
 
 

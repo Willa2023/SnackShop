@@ -15,26 +15,38 @@ namespace backend.Repositories
 
         public async Task<IEnumerable<Sell>> GetAllSellsAsync()
         {
-            return await _context.Sells.Include(s => s.Snack).ToListAsync();
+            return await _context.Sells.Include(s => s.Snack).Include(s => s.Stock).ToListAsync();
         }
 
-        public async Task<Sell> GetSellBySnackIdAsync(int id)
+        public async Task<Sell> GetSellBySnackIdAsync(int snackId)
         {
-            return await _context.Sells.Include(s => s.Snack).FirstOrDefaultAsync(s => s.SnackId == id) ?? throw new Exception("Sell not found");
+            return await _context.Sells.Include(s => s.Snack).Include(s => s.Stock).FirstOrDefaultAsync(s => s.SnackId == snackId) ?? throw new Exception("Sell not found");
         }
 
-        public async Task<Sell> AddSellAsync(int id, int quantity)
+        public async Task<Sell> AddSellAsync(int snackId, int quantity)
         {
-            var snack = await _context.Snacks.FindAsync(id);
+            var snack = await _context.Snacks.FindAsync(snackId);
             if (snack == null)
             {
                 throw new Exception("Snack not found");
             }
+            var stock = await _context.Stocks.FirstOrDefaultAsync(s => s.SnackId == snackId);
+            if (stock == null)
+            {
+                throw new Exception("Stock not found");
+            }
+            if (stock.CurrentStock < quantity)
+            {
+                throw new Exception("Not enough stock");
+            }
             var sell = new Sell
             {
-                SnackId = id,
+                SnackId = snackId,
                 Quantity = quantity,
-                Snack = snack
+                Snack = snack,
+                StockId = stock.Id,
+                Stock = stock,
+                Date = DateTime.Now
             };
             _context.Sells.Add(sell);
             await _context.SaveChangesAsync();

@@ -27,14 +27,15 @@ namespace backend.Controllers
         [HttpGet("{snackId}")]
         public async Task<ActionResult<Stock>> GetStockBySnackId(int snackId)
         {
-            var stock = await _stockRepository.GetStockBySnackIdAsync(snackId);
-
-            if (stock == null)
+            try
             {
-                return NotFound();
+                var stock = await _stockRepository.GetStockBySnackIdAsync(snackId);
+                return Ok(stock);
             }
-
-            return stock;
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
         // POST: api/Stock
