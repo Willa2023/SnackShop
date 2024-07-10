@@ -32,6 +32,24 @@ const StockDataGrid: React.FC<StockDataGridProps> = ({ stocks }) => {
       width: 110,
       editable: false,
     },
+    {
+      field: 'totalCost',
+      headerName: 'Total Cost',
+      width: 110,
+      editable: false,
+    },
+    {
+      field: 'totalSell',
+      headerName: 'Total Sell',
+      width: 110,
+      editable: false,
+    },
+    {
+      field: 'totalProfit',
+      headerName: 'Total Profit',
+      width: 110,
+      editable: false,
+    },
   ];
 
   const rows: GridRowsProp = stocks.map((stock) => ({
@@ -40,6 +58,10 @@ const StockDataGrid: React.FC<StockDataGridProps> = ({ stocks }) => {
     snackId: stock.snackId,
     currentStock: stock.currentStock,
     sellQuantity: stock.soldQuantity,
+    totalStock: stock.totalStock,
+    totalCost: stock.totalCost,
+    totalSell: stock.totalSell,
+    totalProfit: stock.totalProfit,
   }));
 
   return (

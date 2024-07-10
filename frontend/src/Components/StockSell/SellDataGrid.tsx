@@ -46,8 +46,8 @@ const SellDataGrid: React.FC<SellDataGridProps> = ({ sells }) => {
     snackName: sell.snack.name,
     quantity: sell.quantity,
     date: sell.date,
-    // revenue: sell.snack.sellPrice * sell.quantity,
     revenue: sell.totalPrice,
+    profit: sell.profit,
   }));
 
   return (

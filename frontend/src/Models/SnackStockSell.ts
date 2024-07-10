@@ -14,6 +14,9 @@ export interface Stock {
   currentStock: number;
   soldQuantity: number;
   sells: Sell[];
+  totalCost: number;
+  totalSell: number;
+  totalProfit: number;
 }
 
 export interface Sell {
@@ -24,4 +27,5 @@ export interface Sell {
   date: Date;
   stockId: number;
   totalPrice: number;
+  profit: number;
 }

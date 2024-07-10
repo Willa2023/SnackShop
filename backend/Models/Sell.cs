@@ -9,12 +9,8 @@ namespace backend.Models
         public DateTime Date { get; set; }
         public int StockId { get; set; }
 
-        public decimal TotalPrice
-        {
-            get
-            {
-                return Math.Round(Snack.SellPrice * Quantity, 2);
-            }
-        }
+        public decimal TotalPrice => Math.Round(Snack.SellPrice * Quantity, 2);
+        public decimal Profit => Math.Round((Snack.SellPrice - Snack.CostPrice) * Quantity, 2);
+
     }
 }

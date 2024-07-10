@@ -6,15 +6,13 @@ namespace backend.Models
         public int SnackId { get; set; }
         public required Snack Snack { get; set; }
         public int TotalStock { get; set; }
-        public int CurrentStock
-        {
-            get
-            {
-                return TotalStock - SoldQuantity;
-            }
-        }
+        public int CurrentStock => TotalStock - SoldQuantity;
         public int SoldQuantity { get; set; }
         public ICollection<Sell> Sells { get; set; } = new List<Sell>();
+
+        public decimal TotalCost => Math.Round(Snack.CostPrice * TotalStock, 2);
+        public decimal TotalSell => Math.Round(Snack.SellPrice * SoldQuantity, 2);
+        public decimal TotalProfit => Math.Round(TotalSell - TotalCost, 2);
     }
 
 }

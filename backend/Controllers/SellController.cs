@@ -29,7 +29,8 @@ namespace backend.Controllers
                 Quantity = sell.Quantity,
                 Date = sell.Date.ToString("yyyy-MM-dd"),
                 StockId = sell.StockId,
-                TotalPrice = sell.TotalPrice
+                TotalPrice = sell.TotalPrice,
+                Profit = sell.Profit
             }).ToList();
             return Ok(sellDtos);
         }
@@ -51,7 +52,8 @@ namespace backend.Controllers
                 Quantity = sell.Quantity,
                 Date = sell.Date.ToString("yyyy-MM-dd"),
                 StockId = sell.StockId,
-                TotalPrice = sell.TotalPrice
+                TotalPrice = sell.TotalPrice,
+                Profit = sell.Profit
             };
             return Ok(sellDto);
         }

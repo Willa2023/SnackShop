@@ -9,5 +9,6 @@ namespace backend.Models
         public string? Date { get; set; }
         public int StockId { get; set; }
         public decimal TotalPrice { get; set; }
+        public decimal Profit { get; set; }
     }
 }
