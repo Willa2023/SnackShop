@@ -1,15 +1,7 @@
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  Typography,
-  Button,
-  IconButton,
-} from '@mui/material';
+import { AppBar, Box, Toolbar, Button, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useSettings } from '../Contexts/SettingsContext';
 import { NavLink } from 'react-router-dom';
-import { JoinRight } from '@mui/icons-material';
 
 const AppBarBox: React.FC = () => {
   const { toggleDrawer } = useSettings();
@@ -38,6 +30,14 @@ const AppBarBox: React.FC = () => {
             style={{ paddingRight: '30px' }}
           >
             Home
+          </Button>
+          <Button
+            component={NavLink}
+            to="/cart"
+            color="inherit"
+            style={{ paddingRight: '30px' }}
+          >
+            Cart
           </Button>
           <Button
             component={NavLink}

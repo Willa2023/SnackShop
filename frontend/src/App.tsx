@@ -8,6 +8,7 @@ import Settings from './Pages/Settings';
 import Home from './Pages/Home';
 import StockPage from './Pages/StockPage';
 import SellPage from './Pages/SellPage';
+import CartPage from './Pages/CartPage';
 
 const AppContent: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const AppContent: React.FC = () => {
         <Route path="/snack" element={<SnackPage />} />
         <Route path="/stock" element={<StockPage />} />
         <Route path="/sell" element={<SellPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
     </>
