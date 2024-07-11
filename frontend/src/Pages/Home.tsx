@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Box, Button, Grid } from '@mui/material';
+import { Container, Typography, Box, Grid } from '@mui/material';
 import SnackCard from '../Components/SnackCard';
 
 const Home: React.FC = () => {
