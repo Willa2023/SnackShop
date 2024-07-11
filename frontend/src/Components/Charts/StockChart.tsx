@@ -23,6 +23,11 @@ const StockChart: React.FC<StockChartProps> = ({ rows }) => {
         data: rows.map((row) => row.totalCost),
         borderWidth: 1,
       },
+      {
+        label: 'Total Profit',
+        data: rows.map((row) => row.totalProfit),
+        borderWidth: 1,
+      },
     ],
   };
 

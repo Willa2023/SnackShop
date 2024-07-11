@@ -11,44 +11,26 @@ const StockDataGrid: React.FC<StockDataGridProps> = ({ stocks }) => {
     {
       field: 'snackName',
       headerName: 'Snack Name',
-      width: 150,
+      width: 200,
       editable: false,
     },
     { field: 'snackId', headerName: 'Snack ID', width: 110, editable: false },
     {
       field: 'currentStock',
       headerName: 'Current Stock',
-      width: 110,
+      width: 150,
       editable: false,
     },
     {
       field: 'sellQuantity',
       headerName: 'Sell Quantity',
-      width: 110,
+      width: 150,
       editable: false,
     },
     {
       field: 'totalStock',
       headerName: 'Total Stock',
-      width: 110,
-      editable: false,
-    },
-    {
-      field: 'totalCost',
-      headerName: 'Total Cost',
-      width: 110,
-      editable: false,
-    },
-    {
-      field: 'totalSell',
-      headerName: 'Total Sell',
-      width: 110,
-      editable: false,
-    },
-    {
-      field: 'totalProfit',
-      headerName: 'Total Profit',
-      width: 110,
+      width: 150,
       editable: false,
     },
   ];

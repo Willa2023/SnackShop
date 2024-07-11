@@ -1,7 +1,7 @@
 import React from 'react';
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
 import { Sell } from '../../Models/SnackStockSell';
-// import { Bar } from 'react-chartjs-2';
+import SellChart from '../Charts/SellChart';
 
 interface SellDataGridProps {
   sells: Sell[];
@@ -10,34 +10,28 @@ interface SellDataGridProps {
 const SellDataGrid: React.FC<SellDataGridProps> = ({ sells }) => {
   const columns: GridColDef[] = [
     {
-      field: 'snackName',
-      headerName: 'Snack Name',
-      width: 150,
+      field: 'id',
+      headerName: 'ID',
+      width: 100,
       editable: false,
     },
-    { field: 'snackId', headerName: 'Snack ID', width: 110, editable: false },
+    {
+      field: 'snackName',
+      headerName: 'Snack Name',
+      width: 200,
+      editable: false,
+    },
+    { field: 'snackId', headerName: 'Snack ID', width: 150, editable: false },
     {
       field: 'quantity',
       headerName: 'Sell Quantity',
-      width: 110,
+      width: 150,
       editable: false,
     },
     {
       field: 'date',
       headerName: 'Sell Date',
-      width: 110,
-      editable: false,
-    },
-    {
-      field: 'revenue',
-      headerName: 'Revenue',
-      width: 110,
-      editable: false,
-    },
-    {
-      field: 'profit',
-      headerName: 'Profit',
-      width: 110,
+      width: 150,
       editable: false,
     },
   ];
@@ -65,6 +59,7 @@ const SellDataGrid: React.FC<SellDataGridProps> = ({ sells }) => {
         paginationMode="client"
         autoHeight
       ></DataGrid>
+      <SellChart rows={rows} />
     </>
   );
 };
