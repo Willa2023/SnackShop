@@ -9,6 +9,7 @@ Secondly, it provides snack shop managers with tools to manage snack information
 
 
 ## HomePage
+frontend/public/IntroImage/Homepage.png
 
 
 
