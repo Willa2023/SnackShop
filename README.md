@@ -11,5 +11,18 @@ Secondly, it provides snack shop managers with tools to manage snack information
 ## HomePage
 <img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Homepage.png?raw=true">
 
+## Snack Page
+<img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Snack1.png?raw=true">
+
+<img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Snack2.png?raw=true">
+
+## Stock Page
+<img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Stock.png?raw=true">
+
+## Sell Page
+<img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Sell.png?raw=true">
+
+
+
 
 
