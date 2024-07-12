@@ -1,5 +1,5 @@
 # Willa's SnackShop 
-### Updated on 2024-07-12
+### Updated on 2024-07-12 (Continue Developing)
 
 This is a full-stack project featuring a .NET backend and React frontend, designed to cater to two distinct user roles. 
 
