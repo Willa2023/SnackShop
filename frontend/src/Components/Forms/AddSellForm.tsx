@@ -8,22 +8,22 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-interface AddStockFormProps {
+interface AddSellFormProps {
   open: boolean;
   onClose: () => void;
-  onAddStock: (snackId: number, quantity: number) => void;
+  onAddSell: (snackId: number, quantity: number) => void;
 }
 
-const AddStockForm: React.FC<AddStockFormProps> = ({
+const AddSellForm: React.FC<AddSellFormProps> = ({
   open,
   onClose,
-  onAddStock,
+  onAddSell,
 }) => {
   const [snackId, setSnackId] = useState<number>(0);
   const [quantity, setQuantity] = useState<number>(0);
 
   const handleSubmit = () => {
-    onAddStock(snackId, quantity);
+    onAddSell(snackId, quantity);
     setSnackId(0);
     setQuantity(0);
     onClose();
@@ -31,7 +31,7 @@ const AddStockForm: React.FC<AddStockFormProps> = ({
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Add Stock</DialogTitle>
+      <DialogTitle>Add Sell</DialogTitle>
       <DialogContent>
         <TextField
           autoFocus
@@ -45,7 +45,7 @@ const AddStockForm: React.FC<AddStockFormProps> = ({
         <TextField
           autoFocus
           margin="dense"
-          label="Add Stock Quantity"
+          label="Add Sell Quantity"
           type="number"
           fullWidth
           value={quantity}
@@ -60,4 +60,4 @@ const AddStockForm: React.FC<AddStockFormProps> = ({
   );
 };
 
-export default AddStockForm;
+export default AddSellForm;

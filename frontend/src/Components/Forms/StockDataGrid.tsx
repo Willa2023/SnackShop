@@ -31,7 +31,7 @@ const StockDataGrid: React.FC<StockDataGridProps> = ({ stocks }) => {
       field: 'totalStock',
       headerName: 'Total Stock',
       width: 150,
-      editable: false,
+      editable: true,
     },
   ];
 

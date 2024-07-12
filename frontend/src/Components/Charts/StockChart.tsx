@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Doughnut, Line, Pie } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 import { GridRowsProp } from '@mui/x-data-grid';
 
@@ -23,9 +23,15 @@ const StockChart: React.FC<StockChartProps> = ({ rows }) => {
         data: rows.map((row) => row.totalCost),
         borderWidth: 1,
       },
+    ],
+  };
+
+  const data2 = {
+    labels: rows.map((row) => row.snackName),
+    datasets: [
       {
-        label: 'Total Profit',
-        data: rows.map((row) => row.totalProfit),
+        label: 'Total Revenue',
+        data: rows.map((row) => row.totalSell),
         borderWidth: 1,
       },
     ],
@@ -38,7 +44,19 @@ const StockChart: React.FC<StockChartProps> = ({ rows }) => {
       },
     },
   };
-  return <Bar data={data} options={options} />;
+  return (
+    <>
+      <br />
+      <br />
+      <br />
+      <Bar data={data} options={options} />
+      <br />
+      <br />
+      <br />
+      <h5>Total Revenue Table</h5>
+      <Pie data={data2} options={options} />
+    </>
+  );
 };
 
 export default StockChart;

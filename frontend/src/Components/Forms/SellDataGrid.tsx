@@ -21,7 +21,6 @@ const SellDataGrid: React.FC<SellDataGridProps> = ({ sells }) => {
       width: 200,
       editable: false,
     },
-    { field: 'snackId', headerName: 'Snack ID', width: 150, editable: false },
     {
       field: 'quantity',
       headerName: 'Sell Quantity',

@@ -53,7 +53,7 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 90, editable: false },
-    { field: 'name', headerName: 'Name', width: 150, editable: true },
+    { field: 'name', headerName: 'Name', width: 200, editable: true },
     {
       field: 'costPrice',
       headerName: 'Cost Price',
@@ -66,7 +66,7 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
       width: 110,
       editable: true,
     },
-    { field: 'brand', headerName: 'Brand', width: 110, editable: true },
+    { field: 'brand', headerName: 'Brand', width: 150, editable: true },
     {
       field: 'delete',
       headerName: 'Delete',

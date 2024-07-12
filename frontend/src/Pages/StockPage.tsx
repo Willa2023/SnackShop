@@ -9,18 +9,6 @@ const StockPage: React.FC = () => {
   const [stocks, setStocks] = useState<Stock[]>([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
 
-  const handleAddStock = async (snackId: number, addStockNum: number) => {
-    try {
-      console.log('Stock added 1' + snackId + ' ' + addStockNum);
-      const newStock = await createStock(snackId, addStockNum);
-      console.log('Stock added');
-      setStocks((prev) => [...prev, newStock]);
-      setIsFormOpen(false);
-    } catch (err) {
-      console.error('Failed to add stock');
-    }
-  };
-
   const fetchStocks = async () => {
     try {
       const stocks = await getStocks();
@@ -32,6 +20,17 @@ const StockPage: React.FC = () => {
   useEffect(() => {
     fetchStocks();
   }, []);
+
+  const handleAddStock = async (snackId: number, quantity: number) => {
+    try {
+      await createStock(snackId, quantity);
+      const newStocks = await getStocks();
+      setStocks(newStocks);
+      setIsFormOpen(false);
+    } catch (err) {
+      console.error('Failed to add stock');
+    }
+  };
 
   return (
     <>

@@ -12,14 +12,14 @@ export const getStocks = async (): Promise<Stock[]> => {
 
 export const createStock = async (
   snackId: number,
-  addStockNum: number,
+  quantity: number,
 ): Promise<Stock> => {
-  const response = await fetch(`${stocksApiUrl}/${snackId}/${addStockNum}`, {
+  const response = await fetch(`${stocksApiUrl}/${snackId}/${quantity}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ snackId, addStockNum }),
+    body: JSON.stringify({ snackId, quantity }),
   });
   const data = await response.json();
   return data;

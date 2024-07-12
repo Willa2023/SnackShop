@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Line, Pie } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 import { GridRowsProp } from '@mui/x-data-grid';
 
@@ -47,6 +47,7 @@ const SellChart: React.FC<SellChartProps> = ({ rows }) => {
       },
     },
   };
+
   return <Bar data={data} options={options} />;
 };
 
