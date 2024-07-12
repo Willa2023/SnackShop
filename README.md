@@ -9,7 +9,7 @@ Secondly, it provides snack shop managers with tools to manage snack information
 
 
 ## HomePage
-frontend/public/IntroImage/Homepage.png
+https://github.com/Willa2023/SnackShop/blob/8b3f300eac301e51dbfa41c7e4987aefa4c7541b/frontend/public/IntroImage/Homepage.png
 
 
 
