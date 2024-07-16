@@ -67,6 +67,7 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
       editable: true,
     },
     { field: 'brand', headerName: 'Brand', width: 150, editable: true },
+    { field: 'image', headerName: 'Image', width: 150, editable: true },
     {
       field: 'delete',
       headerName: 'Delete',
@@ -86,6 +87,7 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
     costPrice: snack.costPrice,
     sellPrice: snack.sellPrice,
     brand: snack.brand,
+    image: snack.image,
   }));
 
   return (

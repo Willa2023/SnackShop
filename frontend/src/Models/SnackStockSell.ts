@@ -4,6 +4,7 @@ export interface Snack {
   costPrice: number;
   sellPrice: number;
   brand: string;
+  image: string;
 }
 
 export interface Stock {
