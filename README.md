@@ -1,25 +1,26 @@
 # Willa's SnackShop 
 ### Updated on 2024-07-12 (Continue Developing)
 
-This is a full-stack project featuring a .NET backend and React frontend, designed to cater to two distinct user roles. 
+Backend Stack：C#, .NET, EFCore, MVC
 
-Firstly, it allows customers to view snack information, add items to their cart, and proceed to checkout. 
+Frontend Stack：Typescript, React, MUI Library, Chart.js
 
-Secondly, it provides snack shop managers with tools to manage snack information, monitor and edit stock levels, and track sales. It also includes advanced charts that offer clear insights into profits and revenue from different snack items, enabling managers to make informed decisions.
+Database：SQLite
 
+The SnackShop Web Application allows clients to view snacks and add items to their carts. Shop managers have the permissions to manage snacks, stocks, and track sales. Profits and revenue are automatically calculated and displayed in charts for clear insights.
 
 ## HomePage
 <img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Homepage.png?raw=true">
 
-## Snack Page
+## Snack Page (Only for Shop Manager) 
 <img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Snack1.png?raw=true">
 
 <img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Snack2.png?raw=true">
 
-## Stock Page
+## Stock Page (Only for Shop Manager) 
 <img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Stock.png?raw=true">
 
-## Sell Page
+## Sell Page (Only for Shop Manager) 
 <img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Sell.png?raw=true">
 
 
