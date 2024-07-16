@@ -7,5 +7,6 @@ namespace backend.Models
         public required decimal CostPrice { get; set; }
         public required decimal SellPrice { get; set; }
         public string? Brand { get; set; }
+        public string? Image { get; set; }
     }
 }
