@@ -1,5 +1,5 @@
 # Willa's SnackShop 
-### Updated on 2024-07-12 (Continue Developing)
+### Updated on 2024-07-16 (Continue Developing)
 
 Backend Stack：C#, .NET, EFCore, MVC
 
