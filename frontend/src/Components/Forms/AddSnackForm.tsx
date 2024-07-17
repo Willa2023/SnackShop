@@ -30,6 +30,7 @@ const AddSnackForm: React.FC<AddSnackFormProps> = ({
       costPrice: costPrice,
       sellPrice: sellPrice,
       brand: brand,
+      image: 'default.jpg', // later replace default image
     });
     setName('');
     setCostPrice(0);
@@ -52,7 +53,7 @@ const AddSnackForm: React.FC<AddSnackFormProps> = ({
   };
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
       <DialogTitle>Add Snack</DialogTitle>
       <DialogContent>
         <TextField

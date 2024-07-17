@@ -1,6 +1,7 @@
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
 import { Stock } from '../../Models/SnackStockSell';
 import StockChart from '../Charts/StockChart';
+import { Box } from '@mui/material';
 
 interface StockDataGridProps {
   stocks: Stock[];
@@ -48,7 +49,7 @@ const StockDataGrid: React.FC<StockDataGridProps> = ({ stocks }) => {
   }));
 
   return (
-    <>
+    <Box>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -61,7 +62,7 @@ const StockDataGrid: React.FC<StockDataGridProps> = ({ stocks }) => {
         autoHeight
       ></DataGrid>
       <StockChart rows={rows} />
-    </>
+    </Box>
   );
 };
 

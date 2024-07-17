@@ -30,7 +30,7 @@ const AddStockForm: React.FC<AddStockFormProps> = ({
   };
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
       <DialogTitle>Add Stock</DialogTitle>
       <DialogContent>
         <TextField

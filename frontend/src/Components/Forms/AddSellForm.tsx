@@ -30,7 +30,7 @@ const AddSellForm: React.FC<AddSellFormProps> = ({
   };
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
       <DialogTitle>Add Sell</DialogTitle>
       <DialogContent>
         <TextField
