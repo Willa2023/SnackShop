@@ -18,7 +18,7 @@ import { useSettings } from '../Contexts/SettingsContext';
 const drawerWidth = 240;
 
 const Sidebar: React.FC = () => {
-  const { drawerOpen, toggleDrawer } = useSettings();
+  const { isDrawerOpen: drawerOpen, toggleDrawer } = useSettings();
 
   return (
     <Drawer

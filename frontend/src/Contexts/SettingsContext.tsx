@@ -1,8 +1,10 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react';
 
 interface SettingsContextProps {
-  drawerOpen: boolean;
+  isDrawerOpen: boolean;
   toggleDrawer: () => void;
+  isDarkTheme: boolean;
+  toggleDarkTheme: () => void;
 }
 
 const SettingsContext = createContext<SettingsContextProps | undefined>(
@@ -12,14 +14,25 @@ const SettingsContext = createContext<SettingsContextProps | undefined>(
 export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const [isDarkTheme, setDarkTheme] = useState(false);
 
   const toggleDrawer = () => {
-    setDrawerOpen(!drawerOpen);
+    setDrawerOpen(!isDrawerOpen);
+  };
+  const toggleDarkTheme = () => {
+    setDarkTheme(!isDarkTheme);
   };
 
   return (
-    <SettingsContext.Provider value={{ drawerOpen, toggleDrawer }}>
+    <SettingsContext.Provider
+      value={{
+        isDrawerOpen: isDrawerOpen,
+        toggleDrawer,
+        isDarkTheme,
+        toggleDarkTheme,
+      }}
+    >
       {children}
     </SettingsContext.Provider>
   );

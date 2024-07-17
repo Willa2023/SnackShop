@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import StockDataGrid from '../Components/Forms/StockDataGrid';
 import { Stock } from '../Models/SnackStockSell';
@@ -33,28 +33,26 @@ const StockPage: React.FC = () => {
   };
 
   return (
-    <>
-      <Box mt={8}>
-        <Typography variant="h6" gutterBottom>
-          Stock List
-        </Typography>
-        <Box display="flex" gap={2} mb={2}>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setIsFormOpen(true)}
-          >
-            Add Stock
-          </Button>
-        </Box>
-        <StockDataGrid stocks={stocks} />
-        <AddStockForm
-          open={isFormOpen}
-          onClose={() => setIsFormOpen(false)}
-          onAddStock={handleAddStock}
-        />
+    <Box mt={8}>
+      <Typography variant="h6" gutterBottom>
+        Stock List
+      </Typography>
+      <Box display="flex" gap={2} mb={2}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setIsFormOpen(true)}
+        >
+          Add Stock
+        </Button>
       </Box>
-    </>
+      <StockDataGrid stocks={stocks} />
+      <AddStockForm
+        open={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        onAddStock={handleAddStock}
+      />
+    </Box>
   );
 };
 
