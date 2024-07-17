@@ -37,19 +37,32 @@ const SnackCard: React.FC<SnackCardProps> = ({
   };
 
   return (
-    <Card>
-      <CardContent sx={{ minWidth: 180, minHeight: 150 }}>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+    <Card
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        minWidth: 180,
+        minHeight: 250,
+      }}
+    >
+      <CardContent>
+        <Typography variant="h6" gutterBottom>
           {name}
         </Typography>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Box sx={{ textAlign: 'center' }}>
           <img
             src={`/SnackImages/${image}`}
             alt={name}
-            style={{ width: '100%', height: 'auto' }}
+            style={{
+              width: 'auto',
+              height: 'auto',
+              maxHeight: '150px',
+              objectFit: 'cover',
+            }}
           />
-        </Typography>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        </Box>
+        <Typography variant="body2" color="text.secondary" gutterBottom>
           ${price}
         </Typography>
         <Box display="flex" alignItems="center" justifyContent="center">

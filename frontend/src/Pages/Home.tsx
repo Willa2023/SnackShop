@@ -33,8 +33,8 @@ const Home: React.FC = () => {
       }));
     } else {
       const newCartItem: CartItem = {
-        id: Date.now(), // Replace with actual ID from backend or other unique ID generation method
-        snackId: id, // Assuming this maps to the ID of the snack
+        id: Date.now(),
+        snackId: id,
         quantity: quantity,
       };
       setCart((prevCart) => ({
@@ -53,7 +53,7 @@ const Home: React.FC = () => {
       </Box>
       <Grid container rowSpacing={5} columnSpacing={{ xs: 1, sm: 2, md: 5 }}>
         {snacks.map((snack) => (
-          <Grid item xs={4} key={snack.id}>
+          <Grid item xs={12} sm={6} md={4} key={snack.id}>
             <SnackCard
               id={snack.id}
               name={snack.name}
