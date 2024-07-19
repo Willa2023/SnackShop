@@ -42,22 +42,32 @@ const SnackCard: React.FC<SnackCardProps> = ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        minWidth: 180,
-        minHeight: 250,
+        width: '100%',
+        height: 'auto',
       }}
     >
       <CardContent>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" gutterBottom sx={{ height: '80px' }}>
           {name}
         </Typography>
-        <Box sx={{ textAlign: 'center' }}>
+        <Box
+          sx={{
+            textAlign: 'center',
+            height: '150px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            overflow: 'hidden',
+            position: 'relative',
+          }}
+        >
           <img
             src={`/SnackImages/${image}`}
             alt={name}
             style={{
               width: 'auto',
               height: 'auto',
-              maxHeight: '150px',
+              maxHeight: '100%',
               objectFit: 'cover',
             }}
           />

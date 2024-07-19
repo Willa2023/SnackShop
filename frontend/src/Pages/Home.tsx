@@ -45,13 +45,23 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Container>
+    <Container
+      sx={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+      }}
+    >
       <Box my={4} mt={10}>
         <Typography variant="h5" gutterBottom>
           Welcome to Willa's SnackShop
         </Typography>
       </Box>
-      <Grid container rowSpacing={5} columnSpacing={{ xs: 1, sm: 2, md: 5 }}>
+      <Grid
+        container
+        rowSpacing={{ xs: 1, sm: 2, md: 3 }}
+        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      >
         {snacks.map((snack) => (
           <Grid item xs={12} sm={6} md={4} key={snack.id}>
             <SnackCard
@@ -64,15 +74,6 @@ const Home: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-      <Box mt={5}>
-        <Typography variant="h6">Shopping Cart</Typography>
-        {cart.cartItems.map((item, index) => (
-          <Typography key={index}>
-            id is {item.id}
-            quantity is {item.quantity}
-          </Typography>
-        ))}
-      </Box>
     </Container>
   );
 };

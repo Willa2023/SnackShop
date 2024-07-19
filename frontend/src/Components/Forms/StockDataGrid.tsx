@@ -1,7 +1,7 @@
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
 import { Stock } from '../../Models/SnackStockSell';
 import StockChart from '../Charts/StockChart';
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 
 interface StockDataGridProps {
   stocks: Stock[];
@@ -49,20 +49,24 @@ const StockDataGrid: React.FC<StockDataGridProps> = ({ stocks }) => {
   }));
 
   return (
-    <Box>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: { paginationModel: { pageSize: 10, page: 0 } },
-        }}
-        pageSizeOptions={[5, 10, 20]}
-        pagination
-        paginationMode="client"
-        autoHeight
-      ></DataGrid>
-      <StockChart rows={rows} />
-    </Box>
+    <Grid container spacing={2}>
+      <Grid item xs={12} md={8}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          initialState={{
+            pagination: { paginationModel: { pageSize: 10, page: 0 } },
+          }}
+          pageSizeOptions={[5, 10, 20]}
+          pagination
+          paginationMode="client"
+          autoHeight
+        ></DataGrid>
+      </Grid>
+      <Grid item xs={12} md={4}>
+        <StockChart rows={rows} />
+      </Grid>
+    </Grid>
   );
 };
 
