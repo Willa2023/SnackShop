@@ -11,10 +11,8 @@ import SellPage from './Pages/SellPage';
 import CartPage from './Pages/CartPage';
 import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
-const drawerWidth = 240;
-
 const AppContent: React.FC = () => {
-  const { isDrawerOpen, isDarkTheme } = useSettings();
+  const { isDarkTheme } = useSettings();
 
   const theme = createTheme({
     palette: {
@@ -28,29 +26,19 @@ const AppContent: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <AppBarBox />
+      <SideBar />
       <Box
         component="main"
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          transition: (theme) =>
-            theme.transitions.create('margin', {
-              easing: theme.transitions.easing.sharp,
-              duration: theme.transitions.duration.leavingScreen,
-            }),
-          ...(isDrawerOpen && {
-            marginLeft: 0,
-            transition: (theme) =>
-              theme.transitions.create('margin', {
-                easing: theme.transitions.easing.easeOut,
-                duration: theme.transitions.duration.enteringScreen,
-              }),
-          }),
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '100vh',
         }}
       >
-        <AppBarBox />
-        <SideBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/snack" element={<SnackPage />} />
