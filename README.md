@@ -13,15 +13,15 @@ The SnackShop Web Application allows clients to view snacks and add items to the
 <img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Homepage.png?raw=true">
 
 ## Snack Page (Only for Shop Manager) 
-<img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Snack1.png?raw=true">
+<img width="1496" alt="SnackPage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Snack1.png?raw=true">
 
-<img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Snack2.png?raw=true">
+<img width="1496" alt="SnackPage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Snack2.png?raw=true">
 
 ## Stock Page (Only for Shop Manager) 
-<img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Stock.png?raw=true">
+<img width="1496" alt="StockPage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Stock.png?raw=true">
 
 ## Sell Page (Only for Shop Manager) 
-<img width="1496" alt="HomePage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Sell.png?raw=true">
+<img width="1496" alt="SellPage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/SellPage.png?raw=true">
 
 
 
