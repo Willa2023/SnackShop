@@ -11,7 +11,7 @@ The SnackShop Web Application allows clients to view snacks and add items to the
 
 ### HomePage
 <img width="1496" alt="Home1" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Home1.png?raw=true">
-<img width="1496" alt="Home1" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Home2.png?raw=true">
+<img width="1496" alt="Home2" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Home2.jpg?raw=true">
 
 ### Snack Page (Only for Shop Manager) 
 <img width="1496" alt="Snack1" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Snack1.png?raw=true">
