@@ -1,9 +1,13 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import StockDataGrid from '../Components/Forms/StockDataGrid';
 import { Stock } from '../Models/SnackStockSell';
 import { createStock, getStocks } from '../Services/StockService';
 import AddStockForm from '../Components/Forms/AddStockForm';
+import StockChart from '../Components/Charts/StockRevenueCost';
+import StockProfit from '../Components/Charts/StockProfit';
+import StockRevenueCost from '../Components/Charts/StockRevenueCost';
+import StockSellPie from '../Components/Charts/StockSellPie';
 
 const StockPage: React.FC = () => {
   const [stocks, setStocks] = useState<Stock[]>([]);
@@ -33,11 +37,13 @@ const StockPage: React.FC = () => {
   };
 
   return (
-    <Box mt={8}>
-      <Typography variant="h6" gutterBottom>
-        Stock List
-      </Typography>
-      <Box display="flex" gap={2} mb={2}>
+    <Grid container spacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid item xs={12}>
+        <Typography variant="h6" gutterBottom style={{ marginTop: '30px' }}>
+          Stock List
+        </Typography>
+      </Grid>
+      <Grid item display="flex">
         <Button
           variant="contained"
           color="primary"
@@ -45,14 +51,45 @@ const StockPage: React.FC = () => {
         >
           Add Stock
         </Button>
-      </Box>
-      <StockDataGrid stocks={stocks} />
-      <AddStockForm
-        open={isFormOpen}
-        onClose={() => setIsFormOpen(false)}
-        onAddStock={handleAddStock}
-      />
-    </Box>
+      </Grid>
+      <Grid item xs={12}>
+        <StockDataGrid stocks={stocks} />
+        <AddStockForm
+          open={isFormOpen}
+          onClose={() => setIsFormOpen(false)}
+          onAddStock={handleAddStock}
+        />
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        container
+        direction="row"
+        spacing={2}
+        columnGap={1}
+      >
+        <Grid item xs={12}>
+          <Typography variant="h6" gutterBottom style={{ marginTop: '30px' }}>
+            Total Revenue & Cost
+          </Typography>
+          <StockRevenueCost stocks={stocks} />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h6" gutterBottom style={{ marginTop: '30px' }}>
+            Profit By SnackID
+          </Typography>
+          <StockProfit stocks={stocks} />
+        </Grid>
+      </Grid>
+      <Grid item xs={12} sm={1}></Grid>
+      <Grid item xs={12} sm={5}>
+        <Typography variant="h6" gutterBottom style={{ marginTop: '30px' }}>
+          Sell Quantity
+        </Typography>
+        <StockSellPie stocks={stocks} />
+      </Grid>
+    </Grid>
   );
 };
 

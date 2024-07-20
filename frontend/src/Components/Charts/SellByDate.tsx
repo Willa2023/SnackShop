@@ -35,7 +35,6 @@ const SellChartByDate: React.FC<SellChartByDateProps> = ({ sellsByDate }) => {
       tooltip: {
         callbacks: {
           label: function (context: any) {
-            // const label = context.dataset.label || '';
             const value = context.raw;
             return `${value}`;
           },

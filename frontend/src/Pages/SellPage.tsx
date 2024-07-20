@@ -76,7 +76,7 @@ const SellPage: React.FC = () => {
   }, []);
 
   return (
-    <Grid container spacing={{ xs: 1, sm: 2, md: 3 }} mt={8}>
+    <Grid container spacing={{ xs: 1, sm: 2, md: 3 }}>
       <Grid item xs={12}>
         <Typography variant="h6" gutterBottom style={{ marginTop: '30px' }}>
           Sell History

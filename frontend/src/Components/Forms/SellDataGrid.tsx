@@ -93,11 +93,10 @@ const SellDataGrid: React.FC<SellDataGridProps> = ({ sells }) => {
       pageSizeOptions={[5, 10, 20]}
       pagination
       paginationMode="client"
+      disableColumnMenu={isSmallScreen}
       autoHeight
-      disableColumnMenu
       sx={{
         '& .MuiDataGrid-columnHeader': {
-          // typography: isSmallScreen ? '0.2rem' : '1.1rem',
           fontSize: isSmallScreen ? '0.8rem' : '1.0rem',
         },
         '& .MuiDataGrid-cell': {
