@@ -8,17 +8,21 @@ import {
   Avatar,
   Divider,
   Box,
+  Typography,
 } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SettingsIcon from '@mui/icons-material/Settings';
-import AssignmentIcon from '@mui/icons-material/Assignment';
 import { NavLink } from 'react-router-dom';
 import { useSettings } from '../Contexts/SettingsContext';
+import { useAuth0 } from '@auth0/auth0-react';
+import { ShoppingCart } from '@mui/icons-material';
+import PaymentIcon from '@mui/icons-material/Payment';
 
 const drawerWidth = 240;
 
 const Sidebar: React.FC = () => {
   const { isDrawerOpen: drawerOpen, toggleDrawer } = useSettings();
+  const { user, isAuthenticated } = useAuth0();
 
   return (
     <Drawer
@@ -43,10 +47,35 @@ const Sidebar: React.FC = () => {
           mt: 2,
         }}
       >
-        <Avatar sx={{ width: 80, height: 80, mb: 2 }} />
+        {isAuthenticated ? (
+          <>
+            <Avatar
+              src={user?.picture}
+              alt={user?.name}
+              sx={{ width: 80, height: 80, mb: 2 }}
+            />
+            <Typography variant="h6">{user?.name}</Typography>
+          </>
+        ) : (
+          <>
+            <Avatar sx={{ width: 80, height: 80, mb: 2 }} />
+            <Typography variant="h6">User</Typography>
+          </>
+        )}
       </Box>
       <Divider />
       <List>
+        <ListItem
+          component={NavLink}
+          to="/cart"
+          style={{ textDecoration: 'none', color: 'inherit' }}
+          end
+        >
+          <ListItemIcon>
+            <ShoppingCart />
+          </ListItemIcon>
+          <ListItemText primary="Cart" />
+        </ListItem>
         <ListItem
           component={NavLink}
           to="/"
@@ -54,9 +83,9 @@ const Sidebar: React.FC = () => {
           end
         >
           <ListItemIcon>
-            <DashboardIcon />
+            <PaymentIcon />
           </ListItemIcon>
-          <ListItemText primary="Dashboard" />
+          <ListItemText primary="Payment" />
         </ListItem>
         <ListItem
           component={NavLink}
