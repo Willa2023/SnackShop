@@ -9,19 +9,20 @@ Database：SQLite
 
 The SnackShop Web Application allows clients to view snacks and add items to their carts. Shop managers have the permissions to manage snacks, stocks, and track sales. Profits and revenue are automatically calculated and displayed in charts for clear insights.
 
-## HomePage
-<img width="1496" alt="Home" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Home.png?raw=true">
+### HomePage
+<img width="1496" alt="Home1" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Home1.png?raw=true">
+<img width="1496" alt="Home1" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Home2.png?raw=true">
 
-## Snack Page (Only for Shop Manager) 
-<img width="1496" alt="SnackPage1" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/SnackPage1.png?raw=true">
+### Snack Page (Only for Shop Manager) 
+<img width="1496" alt="Snack1" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Snack1.png?raw=true">
 
-<img width="1496" alt="SnackPage2" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/SnackPage2.png?raw=true">
+<img width="1496" alt="Snack2" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Snack2.png?raw=true">
 
-## Stock Page (Only for Shop Manager) 
-<img width="1496" alt="StockPage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Stock1.png?raw=true">
+### Stock Page (Only for Shop Manager) 
+<img width="1496" alt="StockPage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Stock.png?raw=true">
 
-## Sell Page (Only for Shop Manager) 
-<img width="1496" alt="SellPage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/SellPage.png?raw=true">
+### Sell Page (Only for Shop Manager) 
+<img width="1496" alt="SellPage" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Sell.png?raw=true">
 
 
 
