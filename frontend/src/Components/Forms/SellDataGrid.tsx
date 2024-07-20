@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
 import { Sell } from '../../Models/SnackStockSell';
-import SellChart from '../Charts/SellHistory';
-import { Grid, useMediaQuery } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 interface SellDataGridProps {
@@ -16,6 +15,7 @@ const SellDataGrid: React.FC<SellDataGridProps> = ({ sells }) => {
     id: !isSmallScreen,
     snackId: !isSmallScreen,
     quantity: !isSmallScreen,
+    revenue: !isSmallScreen,
   });
 
   useEffect(() => {
@@ -23,6 +23,7 @@ const SellDataGrid: React.FC<SellDataGridProps> = ({ sells }) => {
       id: !isSmallScreen,
       snackId: !isSmallScreen,
       quantity: !isSmallScreen,
+      revenue: !isSmallScreen,
     });
   }, [isSmallScreen]);
 
@@ -53,19 +54,21 @@ const SellDataGrid: React.FC<SellDataGridProps> = ({ sells }) => {
       field: 'date',
       headerName: 'Date',
       maxWidth: isSmallScreen ? 100 : 1000,
-      flex: 1,
+      minWidth: 100,
+      flex: 0.8,
     },
     {
       field: 'revenue',
-      headerName: 'revenue',
+      headerName: 'Revenue',
       maxWidth: isSmallScreen ? 100 : 1000,
-      flex: 1,
+      flex: 0.5,
     },
     {
       field: 'profit',
       headerName: 'Profit',
       maxWidth: isSmallScreen ? 100 : 1000,
-      flex: 1,
+      minWidth: 70,
+      flex: 0.5,
     },
   ];
 
@@ -80,33 +83,31 @@ const SellDataGrid: React.FC<SellDataGridProps> = ({ sells }) => {
   }));
 
   return (
-    <Grid container>
-      <Grid item xs={12} sx={{ overflowX: 'auto' }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          columnVisibilityModel={columnVisibilityModel}
-          initialState={{
-            pagination: { paginationModel: { pageSize: 10, page: 0 } },
-          }}
-          pageSizeOptions={[5, 10, 20]}
-          pagination
-          paginationMode="client"
-          autoHeight
-          sx={{
-            '& .MuiDataGrid-columnHeader': {
-              fontSize: isSmallScreen ? '0.9rem' : '1.1rem',
-            },
-            '& .MuiDataGrid-cell': {
-              fontSize: isSmallScreen ? '0.75rem' : '0.9rem',
-            },
-          }}
-        ></DataGrid>
-      </Grid>
-      {/* <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
-        <SellChart rows={rows} />
-      </Grid> */}
-    </Grid>
+    <DataGrid
+      rows={rows}
+      columns={columns}
+      columnVisibilityModel={columnVisibilityModel}
+      initialState={{
+        pagination: { paginationModel: { pageSize: 10, page: 0 } },
+      }}
+      pageSizeOptions={[5, 10, 20]}
+      pagination
+      paginationMode="client"
+      autoHeight
+      disableColumnMenu
+      sx={{
+        '& .MuiDataGrid-columnHeader': {
+          // typography: isSmallScreen ? '0.2rem' : '1.1rem',
+          fontSize: isSmallScreen ? '0.8rem' : '1.0rem',
+        },
+        '& .MuiDataGrid-cell': {
+          fontSize: isSmallScreen ? '0.75rem' : '0.9rem',
+        },
+        '& .MuiDataGrid-root': {
+          overflowX: 'auto',
+        },
+      }}
+    ></DataGrid>
   );
 };
 
