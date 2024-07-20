@@ -1,26 +1,26 @@
 import React from 'react';
-import { Bar, Line, Pie } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
-import { GridRowsProp } from '@mui/x-data-grid';
+import { Sell } from '../../Models/SnackStockSell';
 
 Chart.register(...registerables);
 
 interface SellChartProps {
-  rows: GridRowsProp;
+  sells: Sell[];
 }
 
-const SellChart: React.FC<SellChartProps> = ({ rows }) => {
+const SellChart: React.FC<SellChartProps> = ({ sells }) => {
   const data = {
-    labels: rows.map((row) => `${row.snackName} at ${row.date}`),
+    labels: sells.map((sell) => `Snack ID: ${sell.snackId}`),
     datasets: [
       {
         label: 'Revenue',
-        data: rows.map((row) => row.revenue),
+        data: sells.map((sell) => sell.totalPrice),
         borderWidth: 1,
       },
       {
         label: 'Profit',
-        data: rows.map((row) => row.profit),
+        data: sells.map((sell) => sell.profit),
         borderWidth: 1,
       },
     ],
@@ -36,9 +36,8 @@ const SellChart: React.FC<SellChartProps> = ({ rows }) => {
       tooltip: {
         callbacks: {
           label: function (context: any) {
-            const label = context.dataset.label || '';
             const value = context.raw;
-            return `${label}: ${value}`;
+            return `${value}`;
           },
         },
       },
@@ -48,7 +47,13 @@ const SellChart: React.FC<SellChartProps> = ({ rows }) => {
     },
   };
 
-  return <Bar data={data} options={options} />;
+  return (
+    <Bar
+      data={data}
+      options={options}
+      style={{ width: '100%', height: '300px', marginTop: '20px' }}
+    />
+  );
 };
 
 export default SellChart;
