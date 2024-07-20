@@ -97,7 +97,7 @@ const SellDataGrid: React.FC<SellDataGridProps> = ({ sells }) => {
       autoHeight
       sx={{
         '& .MuiDataGrid-columnHeader': {
-          fontSize: isSmallScreen ? '0.8rem' : '1.0rem',
+          fontSize: isSmallScreen ? '0.75rem' : '0.9rem',
         },
         '& .MuiDataGrid-cell': {
           fontSize: isSmallScreen ? '0.75rem' : '0.9rem',

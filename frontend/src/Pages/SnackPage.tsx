@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import SnackDataGrid from '../Components/Forms/SnackDataGrid';
 import AddSnackForm from '../Components/Forms/AddSnackForm';
 import React, { useEffect, useState } from 'react';
@@ -37,20 +37,22 @@ const SnackPage: React.FC = () => {
   };
 
   return (
-    <>
-      <Box mb={2} mt={10}>
-        <Typography variant="h6" gutterBottom>
+    <Grid container spacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid item xs={12}>
+        <Typography variant="h6" gutterBottom style={{ marginTop: '30px' }}>
           Snack List
         </Typography>
-        <Box display="flex" gap={2} mb={2}>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setIsFormOpen(true)}
-          >
-            Add Snack
-          </Button>
-        </Box>
+      </Grid>
+      <Grid item display="flex">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setIsFormOpen(true)}
+        >
+          Add Snack
+        </Button>
+      </Grid>
+      <Grid item xs={12}>
         <SnackDataGrid
           snacks={snacks}
           setSnacks={setSnacks}
@@ -62,8 +64,8 @@ const SnackPage: React.FC = () => {
           onClose={() => setIsFormOpen(false)}
           onAddSnack={handleAddSnack}
         />
-      </Box>
-    </>
+      </Grid>
+    </Grid>
   );
 };
 

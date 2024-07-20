@@ -8,6 +8,9 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Snack } from '../../Models/SnackStockSell';
 import { deleteSnack, updateSnack } from '../../Services/SnackService';
+import { useTheme } from '@mui/material/styles';
+import { useMediaQuery } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 interface SnackDataGridProps {
   snacks: Snack[];
@@ -22,6 +25,24 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
   loading,
   error,
 }) => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const [columnVisibilityModel, setColumnVisibilityModel] = useState({
+    id: !isSmallScreen,
+    brand: !isSmallScreen,
+    image: !isSmallScreen,
+    delete: !isSmallScreen,
+  });
+
+  useEffect(() => {
+    setColumnVisibilityModel({
+      id: !isSmallScreen,
+      brand: !isSmallScreen,
+      image: !isSmallScreen,
+      delete: !isSmallScreen,
+    });
+  }, [isSmallScreen]);
+
   const handleEdit = async (newRow: GridRowModel) => {
     const updatedSnack: Snack = {
       ...newRow,
@@ -52,22 +73,36 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
   };
 
   const columns: GridColDef[] = [
-    { field: 'id', headerName: 'ID', width: 90, editable: false },
-    { field: 'name', headerName: 'Name', width: 200, editable: true },
+    { field: 'id', headerName: 'ID', width: 90, flex: 0.5 },
+    { field: 'name', headerName: 'Name', width: 200, editable: true, flex: 1 },
     {
       field: 'costPrice',
       headerName: 'Cost Price',
       width: 110,
       editable: true,
+      flex: 1,
     },
     {
       field: 'sellPrice',
       headerName: 'Sell Price',
       width: 110,
       editable: true,
+      flex: 1,
     },
-    { field: 'brand', headerName: 'Brand', width: 150, editable: true },
-    { field: 'image', headerName: 'Image', width: 150, editable: true },
+    {
+      field: 'brand',
+      headerName: 'Brand',
+      width: 150,
+      editable: true,
+      flex: 1,
+    },
+    {
+      field: 'image',
+      headerName: 'Image',
+      width: 150,
+      editable: true,
+      flex: 1,
+    },
     {
       field: 'delete',
       headerName: 'Delete',
@@ -98,6 +133,7 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
       <DataGrid
         rows={rows}
         columns={columns}
+        columnVisibilityModel={columnVisibilityModel}
         initialState={{
           pagination: { paginationModel: { pageSize: 10, page: 0 } },
         }}
@@ -105,7 +141,19 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
         pagination
         paginationMode="client"
         loading={loading}
+        disableColumnMenu={isSmallScreen}
         autoHeight
+        sx={{
+          '& .MuiDataGrid-columnHeader': {
+            fontSize: isSmallScreen ? '0.75rem' : '0.9rem',
+          },
+          '& .MuiDataGrid-cell': {
+            fontSize: isSmallScreen ? '0.75rem' : '0.9rem',
+          },
+          '& .MuiDataGrid-root': {
+            overflowX: 'auto',
+          },
+        }}
         processRowUpdate={handleEdit}
       ></DataGrid>
     </div>
