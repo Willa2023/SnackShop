@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import SnackDataGrid from '../Components/Forms/SnackDataGrid';
 import AddSnackForm from '../Components/Forms/AddSnackForm';
 import React, { useEffect, useState } from 'react';
