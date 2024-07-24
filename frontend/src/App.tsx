@@ -10,6 +10,7 @@ import StockPage from './Pages/StockPage';
 import SellPage from './Pages/SellPage';
 import CartPage from './Pages/CartPage';
 import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import AISuggestionPage from './Pages/AISuggestionPage';
 
 const AppContent: React.FC = () => {
   const { isDarkTheme } = useSettings();
@@ -44,6 +45,7 @@ const AppContent: React.FC = () => {
           <Route path="/snack" element={<SnackPage />} />
           <Route path="/stock" element={<StockPage />} />
           <Route path="/sell" element={<SellPage />} />
+          <Route path="/aisuggestion" element={<AISuggestionPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>

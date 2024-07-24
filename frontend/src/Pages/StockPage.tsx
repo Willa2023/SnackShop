@@ -1,4 +1,4 @@
-import { Button, Grid, Input, TextField, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import StockDataGrid from '../Components/Forms/StockDataGrid';
 import { Stock } from '../Models/SnackStockSell';
@@ -7,13 +7,10 @@ import AddStockForm from '../Components/Forms/AddStockForm';
 import StockProfit from '../Components/Charts/StockProfit';
 import StockRevenueCost from '../Components/Charts/StockRevenueCost';
 import StockSellPie from '../Components/Charts/StockSellPie';
-import { getAdvice } from '../Services/OpenAIService';
 
 const StockPage: React.FC = () => {
   const [stocks, setStocks] = useState<Stock[]>([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [question, setQuestion] = useState('');
-  const [answer, setAnswer] = useState('');
 
   const fetchStocks = async () => {
     try {
@@ -37,15 +34,6 @@ const StockPage: React.FC = () => {
       console.error('Failed to add stock');
     }
   };
-  const fetchAnswerFromOpenAI = async (question: string) => {
-    try {
-      const answer = await getAdvice(question);
-      setAnswer(answer);
-      console.log(answer);
-    } catch (err) {
-      console.error('Failed to fetch answer:', err);
-    }
-  };
 
   return (
     <Grid container spacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -54,28 +42,6 @@ const StockPage: React.FC = () => {
           Stock List
         </Typography>
       </Grid>
-      {/* test openai */}
-      <Grid item xs={12}>
-        <TextField
-          fullWidth
-          placeholder="Ask a question"
-          type="text"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-        ></TextField>
-        <Button onClick={() => fetchAnswerFromOpenAI(question)}>
-          Get the answer
-        </Button>
-        <TextField
-          fullWidth
-          multiline
-          rows={4}
-          type="text"
-          value={answer}
-          onChange={(e) => setAnswer(e.target.value)}
-        ></TextField>
-      </Grid>
-      {/* test openai */}
       <Grid item display="flex">
         <Button
           variant="contained"

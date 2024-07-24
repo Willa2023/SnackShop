@@ -10,6 +10,7 @@ import { useSettings } from '../Contexts/SettingsContext';
 import { NavLink } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { ShoppingCart } from '@mui/icons-material';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 const AppBarBox: React.FC = () => {
   const { toggleDrawer } = useSettings();
@@ -73,6 +74,15 @@ const AppBarBox: React.FC = () => {
           >
             <SellIcon />
             Sell
+          </Button>
+          <Button
+            component={NavLink}
+            to="/aisuggestion"
+            color="inherit"
+            style={{ paddingRight: '30px' }}
+          >
+            <AutoAwesomeIcon />
+            Ask AI
           </Button>
           {!isAuthenticated ? (
             <Button
