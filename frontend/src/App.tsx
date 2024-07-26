@@ -1,6 +1,12 @@
 import './App.css';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import AppBarBox from './Components/AppBarBox';
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  Navigate,
+  Outlet,
+} from 'react-router-dom';
+import NavBarBox from './Components/NavBarBox';
 import SideBar from './Components/SideBar';
 import SnackPage from './Pages/SnackPage';
 import { SettingsProvider, useSettings } from './Contexts/SettingsContext';
@@ -11,6 +17,17 @@ import SellPage from './Pages/SellPage';
 import CartPage from './Pages/CartPage';
 import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import AISuggestionPage from './Pages/AISuggestionPage';
+import { useAuth0 } from '@auth0/auth0-react';
+import { ReactNode } from 'react';
+import NoPermissionPage from './Pages/NoPermissionPage';
+
+const PrivateRoute = ({ children }: { children?: ReactNode }) => {
+  const { isAuthenticated } = useAuth0();
+  if (!isAuthenticated) {
+    return <Navigate to="/nopermission" />;
+  }
+  return children ? <>{children}</> : <Outlet />;
+};
 
 const AppContent: React.FC = () => {
   const { isDarkTheme } = useSettings();
@@ -27,7 +44,7 @@ const AppContent: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBarBox />
+      <NavBarBox />
       <SideBar />
       <Box
         component="main"
@@ -42,12 +59,15 @@ const AppContent: React.FC = () => {
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/snack" element={<SnackPage />} />
-          <Route path="/stock" element={<StockPage />} />
-          <Route path="/sell" element={<SellPage />} />
-          <Route path="/aisuggestion" element={<AISuggestionPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/nopermission" element={<NoPermissionPage />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/admin/snack" element={<SnackPage />} />
+            <Route path="/admin/stock" element={<StockPage />} />
+            <Route path="/admin/sell" element={<SellPage />} />
+            <Route path="/admin/ai" element={<AISuggestionPage />} />
+          </Route>
         </Routes>
       </Box>
     </ThemeProvider>

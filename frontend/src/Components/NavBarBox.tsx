@@ -12,7 +12,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { ShoppingCart } from '@mui/icons-material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
-const AppBarBox: React.FC = () => {
+const NavBarBox: React.FC = () => {
   const { toggleDrawer } = useSettings();
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
@@ -50,7 +50,7 @@ const AppBarBox: React.FC = () => {
           </Button>
           <Button
             component={NavLink}
-            to="/snack"
+            to="/admin/snack"
             color="inherit"
             style={{ paddingRight: '30px' }}
           >
@@ -59,7 +59,7 @@ const AppBarBox: React.FC = () => {
           </Button>
           <Button
             component={NavLink}
-            to="/stock"
+            to="/admin/stock"
             color="inherit"
             style={{ paddingRight: '30px' }}
           >
@@ -68,7 +68,7 @@ const AppBarBox: React.FC = () => {
           </Button>
           <Button
             component={NavLink}
-            to="/sell"
+            to="/admin/sell"
             color="inherit"
             style={{ paddingRight: '30px' }}
           >
@@ -77,7 +77,7 @@ const AppBarBox: React.FC = () => {
           </Button>
           <Button
             component={NavLink}
-            to="/aisuggestion"
+            to="/admin/ai"
             color="inherit"
             style={{ paddingRight: '30px' }}
           >
@@ -111,4 +111,4 @@ const AppBarBox: React.FC = () => {
   );
 };
 
-export default AppBarBox;
+export default NavBarBox;
