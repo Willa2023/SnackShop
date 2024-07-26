@@ -1,6 +1,7 @@
 # Willa's SnackShop (Continue Developing)
 ### Updated on 2024-07-24: Add AI feature 
 [More Change Logs](https://github.com/Willa2023/SnackShop/wiki/Change-Logs)
+
 The SnackShop Web Application allows clients to view snacks and add items to their carts. Shop managers have the permissions to manage snacks, stocks, and track sales. Profits and revenue are automatically calculated and displayed in charts for clear insights.
 
 Backend Stack：C#, .NET, EFCore, MVC, OpenAI (Betalgo.OpenAI Library for .NET)
