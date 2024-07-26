@@ -1,6 +1,6 @@
 # Willa's SnackShop (Continue Developing)
 ### Updated on 2024-07-24: Add AI feature 
-[More Change Logs] (https://github.com/Willa2023/SnackShop/wiki/Change-Logs)
+[More Change Logs](https://github.com/Willa2023/SnackShop/wiki/Change-Logs)
 
 Backend Stack：C#, .NET, EFCore, MVC, OpenAI (Betalgo.OpenAI Library for .NET)
 
