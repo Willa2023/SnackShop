@@ -1,7 +1,7 @@
 import { Button, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import StockDataGrid from '../Components/Forms/StockDataGrid';
-import { Stock } from '../Models/SnackStockSell';
+import { Stock } from '../Models/SnackStockSellCart';
 import { createStock, getStocks } from '../Services/StockService';
 import AddStockForm from '../Components/Forms/AddStockForm';
 import StockProfit from '../Components/Charts/StockProfit';

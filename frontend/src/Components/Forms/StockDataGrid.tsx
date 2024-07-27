@@ -1,5 +1,5 @@
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
-import { Stock } from '../../Models/SnackStockSell';
+import { Stock } from '../../Models/SnackStockSellCart';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useEffect, useState } from 'react';

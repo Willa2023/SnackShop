@@ -2,7 +2,7 @@ import React from 'react';
 import { Bar, Doughnut, Line, Pie } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 import { GridRowsProp } from '@mui/x-data-grid';
-import { Stock } from '../../Models/SnackStockSell';
+import { Stock } from '../../Models/SnackStockSellCart';
 
 Chart.register(...registerables);
 

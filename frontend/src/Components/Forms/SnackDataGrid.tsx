@@ -6,7 +6,7 @@ import {
   GridRowsProp,
 } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Snack } from '../../Models/SnackStockSell';
+import { Snack } from '../../Models/SnackStockSellCart';
 import { deleteSnack, updateSnack } from '../../Services/SnackService';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';

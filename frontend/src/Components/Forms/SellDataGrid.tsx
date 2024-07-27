@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
-import { Sell } from '../../Models/SnackStockSell';
+import { Sell } from '../../Models/SnackStockSellCart';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 

@@ -1,5 +1,5 @@
 import config from '../Config';
-import { Stock } from '../Models/SnackStockSell';
+import { Stock } from '../Models/SnackStockSellCart';
 
 const { apiUrl } = config;
 const { openai: openaiApiUrl } = apiUrl;

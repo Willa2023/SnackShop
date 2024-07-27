@@ -1,5 +1,5 @@
 import config from '../Config';
-import { Snack } from '../Models/SnackStockSell';
+import { Snack } from '../Models/SnackStockSellCart';
 
 const { apiUrl } = config;
 const { snack: snacksApiUrl } = apiUrl;

@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Typography, Box, Grid } from '@mui/material';
 import SnackCard from '../Components/SnackCard';
-import { Snack } from '../Models/SnackStockSell';
+import { Snack } from '../Models/SnackStockSellCart';
 import { getSnacks } from '../Services/SnackService';
-import { Cart, CartItem } from '../Models/Cart';
+import { CartItem } from '../Models/SnackStockSellCart';
+import { useSettings } from '../Contexts/SettingsContext';
 
 const Home: React.FC = () => {
   const [snacks, setSnacks] = useState<Snack[]>([]);
-  const [cart, setCart] = useState<Cart>({
-    id: 1,
-    name: 'Shopping Cart',
-    cartItems: [],
-  });
+  const { cart, setCart } = useSettings();
 
   const fetchSnacks = async () => {
     const data = await getSnacks();
@@ -21,26 +18,25 @@ const Home: React.FC = () => {
     fetchSnacks();
   }, []);
 
-  const handleAddToCart = (id: number, quantity: number) => {
-    const existingItem = cart.cartItems.find((item) => item.id === id);
+  const handleAddToCart = (snackId: number, quantity: number) => {
+    const existingItem = cart.cartItems.find(
+      (item) => item.snackId === snackId,
+    );
     if (existingItem) {
       const updatedCartItems = cart.cartItems.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + quantity } : item,
+        item.snackId === snackId
+          ? { ...item, quantity: item.quantity + quantity }
+          : item,
       );
-      setCart((prevCart) => ({
-        ...prevCart,
-        cartItems: updatedCartItems,
-      }));
+      setCart({ ...cart, cartItems: updatedCartItems });
     } else {
       const newCartItem: CartItem = {
         id: Date.now(),
-        snackId: id,
+        snackId: snackId,
         quantity: quantity,
+        snack: snacks.find((snack) => snack.id === snackId) as Snack,
       };
-      setCart((prevCart) => ({
-        ...prevCart,
-        cartItems: [...prevCart.cartItems, newCartItem],
-      }));
+      setCart({ ...cart, cartItems: [...cart.cartItems, newCartItem] });
     }
   };
 

@@ -1,6 +1,6 @@
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { Stock } from '../Models/SnackStockSell';
+import { Stock } from '../Models/SnackStockSellCart';
 import { getStocks } from '../Services/StockService';
 import { getAdvice } from '../Services/OpenAIService';
 

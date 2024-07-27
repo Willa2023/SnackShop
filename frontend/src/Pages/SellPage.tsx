@@ -1,6 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { Sell } from '../Models/SnackStockSell';
+import { Sell } from '../Models/SnackStockSellCart';
 import { getSells } from '../Services/SellService';
 import SellDataGrid from '../Components/Forms/SellDataGrid';
 import SellChartByDate from '../Components/Charts/SellByDate';

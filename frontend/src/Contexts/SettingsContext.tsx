@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { Cart } from '../Models/SnackStockSellCart';
 
 interface SettingsContextProps {
   isDrawerOpen: boolean;
@@ -13,6 +14,9 @@ interface SettingsContextProps {
   isDarkTheme: boolean;
   toggleDarkTheme: () => void;
   roles: string[];
+  userId: string;
+  cart: Cart;
+  setCart: (cart: Cart) => void;
 }
 
 const SettingsContext = createContext<SettingsContextProps | undefined>(
@@ -26,6 +30,12 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
   const [isDarkTheme, setDarkTheme] = useState(false);
   const { isAuthenticated, getIdTokenClaims } = useAuth0();
   const [roles, setRoles] = useState<string[]>([]);
+  const [userId, setUserId] = useState<string>('');
+  const [cart, setCart] = useState<Cart>({
+    id: 0,
+    userId: '',
+    cartItems: [],
+  });
 
   useEffect(() => {
     const fetchRoles = async () => {
@@ -33,7 +43,10 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
         const tokenClaims = await getIdTokenClaims();
         if (tokenClaims) {
           const roles = tokenClaims['https://snackshop.com/roles'];
+          const userId = tokenClaims.sub;
           setRoles(roles);
+          setUserId(userId);
+          setCart((prev) => ({ ...prev, userId: userId }));
         }
       }
     };
@@ -50,11 +63,14 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
   return (
     <SettingsContext.Provider
       value={{
-        isDrawerOpen: isDrawerOpen,
+        isDrawerOpen,
         toggleDrawer,
         isDarkTheme,
         toggleDarkTheme,
         roles,
+        userId,
+        cart,
+        setCart,
       }}
     >
       {children}

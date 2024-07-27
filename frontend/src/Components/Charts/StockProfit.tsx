@@ -1,7 +1,7 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
-import { Stock } from '../../Models/SnackStockSell';
+import { Stock } from '../../Models/SnackStockSellCart';
 
 Chart.register(...registerables);
 

@@ -1,6 +1,6 @@
 export interface Cart {
   id: number;
-  name: string;
+  userId: string;
   cartItems: CartItem[];
 }
 

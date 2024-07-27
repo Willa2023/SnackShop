@@ -15,7 +15,7 @@ import NoPermissionPage from './Pages/NoPermissionPage';
 import PrivateRoute from './Components/PrivateRoute';
 
 const AppContent: React.FC = () => {
-  const { isDarkTheme } = useSettings();
+  const { isDarkTheme, cart } = useSettings();
 
   const theme = createTheme({
     palette: {
@@ -44,7 +44,7 @@ const AppContent: React.FC = () => {
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="/cart" element={<CartPage cart={cart} />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/nopermission" element={<NoPermissionPage />} />
           <Route element={<PrivateRoute requiredRoles={['Admin']} />}>

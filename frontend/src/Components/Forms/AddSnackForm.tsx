@@ -6,7 +6,7 @@ import {
   DialogTitle,
   TextField,
 } from '@mui/material';
-import { Snack } from '../../Models/SnackStockSell';
+import { Snack } from '../../Models/SnackStockSellCart';
 
 interface AddSnackFormProps {
   open: boolean;
