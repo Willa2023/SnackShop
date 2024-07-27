@@ -13,7 +13,7 @@ import { ShoppingCart } from '@mui/icons-material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 const NavBarBox: React.FC = () => {
-  const { toggleDrawer } = useSettings();
+  const { toggleDrawer, roles } = useSettings();
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   return (
@@ -39,51 +39,57 @@ const NavBarBox: React.FC = () => {
             <HomeIcon />
             Home
           </Button>
-          <Button
-            component={NavLink}
-            to="/cart"
-            color="inherit"
-            style={{ paddingRight: '30px' }}
-          >
-            <ShoppingCart />
-            Cart
-          </Button>
-          <Button
-            component={NavLink}
-            to="/admin/snack"
-            color="inherit"
-            style={{ paddingRight: '30px' }}
-          >
-            <IcecreamIcon />
-            Snack
-          </Button>
-          <Button
-            component={NavLink}
-            to="/admin/stock"
-            color="inherit"
-            style={{ paddingRight: '30px' }}
-          >
-            <InventoryIcon />
-            Stock
-          </Button>
-          <Button
-            component={NavLink}
-            to="/admin/sell"
-            color="inherit"
-            style={{ paddingRight: '30px' }}
-          >
-            <SellIcon />
-            Sell
-          </Button>
-          <Button
-            component={NavLink}
-            to="/admin/ai"
-            color="inherit"
-            style={{ paddingRight: '30px' }}
-          >
-            <AutoAwesomeIcon />
-            Ask AI
-          </Button>
+          {isAuthenticated && (
+            <Button
+              component={NavLink}
+              to="/cart"
+              color="inherit"
+              style={{ paddingRight: '30px' }}
+            >
+              <ShoppingCart />
+              Cart
+            </Button>
+          )}
+          {roles.includes('Admin') && (
+            <>
+              <Button
+                component={NavLink}
+                to="/admin/snack"
+                color="inherit"
+                style={{ paddingRight: '30px' }}
+              >
+                <IcecreamIcon />
+                Snack
+              </Button>
+              <Button
+                component={NavLink}
+                to="/admin/stock"
+                color="inherit"
+                style={{ paddingRight: '30px' }}
+              >
+                <InventoryIcon />
+                Stock
+              </Button>
+              <Button
+                component={NavLink}
+                to="/admin/sell"
+                color="inherit"
+                style={{ paddingRight: '30px' }}
+              >
+                <SellIcon />
+                Sell
+              </Button>
+              <Button
+                component={NavLink}
+                to="/admin/ai"
+                color="inherit"
+                style={{ paddingRight: '30px' }}
+              >
+                <AutoAwesomeIcon />
+                Ask AI
+              </Button>
+            </>
+          )}
           {!isAuthenticated ? (
             <Button
               onClick={() => loginWithRedirect()}

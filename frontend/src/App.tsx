@@ -1,11 +1,5 @@
 import './App.css';
-import {
-  Route,
-  BrowserRouter as Router,
-  Routes,
-  Navigate,
-  Outlet,
-} from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import NavBarBox from './Components/NavBarBox';
 import SideBar from './Components/SideBar';
 import SnackPage from './Pages/SnackPage';
@@ -17,17 +11,8 @@ import SellPage from './Pages/SellPage';
 import CartPage from './Pages/CartPage';
 import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import AISuggestionPage from './Pages/AISuggestionPage';
-import { useAuth0 } from '@auth0/auth0-react';
-import { ReactNode } from 'react';
 import NoPermissionPage from './Pages/NoPermissionPage';
-
-const PrivateRoute = ({ children }: { children?: ReactNode }) => {
-  const { isAuthenticated } = useAuth0();
-  if (!isAuthenticated) {
-    return <Navigate to="/nopermission" />;
-  }
-  return children ? <>{children}</> : <Outlet />;
-};
+import PrivateRoute from './Components/PrivateRoute';
 
 const AppContent: React.FC = () => {
   const { isDarkTheme } = useSettings();
@@ -62,7 +47,7 @@ const AppContent: React.FC = () => {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/nopermission" element={<NoPermissionPage />} />
-          <Route element={<PrivateRoute />}>
+          <Route element={<PrivateRoute requiredRoles={['Admin']} />}>
             <Route path="/admin/snack" element={<SnackPage />} />
             <Route path="/admin/stock" element={<StockPage />} />
             <Route path="/admin/sell" element={<SellPage />} />
