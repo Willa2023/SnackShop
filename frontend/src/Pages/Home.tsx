@@ -49,7 +49,7 @@ const Home: React.FC = () => {
       }}
     >
       <Box my={4} mt={10}>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h6" gutterBottom>
           Welcome to Willa's SnackShop
         </Typography>
       </Box>

@@ -6,9 +6,11 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { Cart } from '../Models/SnackStockSellCart';
+import { Cart, Snack } from '../Models/SnackStockSellCart';
+import { getSnacks } from '../Services/SnackService';
 
 interface SettingsContextProps {
+  snacks: Snack[];
   isDrawerOpen: boolean;
   toggleDrawer: () => void;
   isDarkTheme: boolean;
@@ -17,6 +19,7 @@ interface SettingsContextProps {
   userId: string;
   cart: Cart;
   setCart: (cart: Cart) => void;
+  addToCart: (id: number, quantity: number) => void;
 }
 
 const SettingsContext = createContext<SettingsContextProps | undefined>(
@@ -36,6 +39,35 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
     userId: '',
     cartItems: [],
   });
+
+  const [snacks, setSnacks] = useState<Snack[]>([]);
+  const fetchSnacks = async () => {
+    const fetchedSnacks = await getSnacks();
+    setSnacks(fetchedSnacks);
+  };
+  useEffect(() => {
+    fetchSnacks();
+  }, []);
+
+  const addToCart = (id: number, quantity: number) => {
+    const snack = snacks.find((snack) => snack.id === id);
+
+    if (!snack) {
+      console.error(`Snack with id ${id} not found`);
+      return;
+    }
+    const newItem = {
+      id,
+      snack,
+      snackId: id,
+      quantity,
+      checked: true,
+    };
+    setCart((prev) => ({
+      ...prev,
+      cartItems: [...prev.cartItems, newItem],
+    }));
+  };
 
   useEffect(() => {
     const fetchRoles = async () => {
@@ -71,6 +103,8 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
         userId,
         cart,
         setCart,
+        addToCart,
+        snacks,
       }}
     >
       {children}

@@ -15,7 +15,7 @@ interface SnackCardProps {
   name: string;
   price: number;
   image: string;
-  onAddToCart: (id: number, quantity: number) => void;
+  onAddToCart: (id: number, quantity: number, checked: boolean) => void;
 }
 
 const SnackCard: React.FC<SnackCardProps> = ({
@@ -30,10 +30,12 @@ const SnackCard: React.FC<SnackCardProps> = ({
     setQuantity(quantity + 1);
   };
   const handleRemove = () => {
-    setQuantity(quantity - 1);
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
   };
   const handleAddToCart = () => {
-    onAddToCart(id, quantity);
+    onAddToCart(id, quantity, true);
   };
 
   return (
@@ -47,7 +49,7 @@ const SnackCard: React.FC<SnackCardProps> = ({
       }}
     >
       <CardContent>
-        <Typography variant="h6" gutterBottom sx={{ height: '80px' }}>
+        <Typography variant="body1" gutterBottom sx={{ height: '80px' }}>
           {name}
         </Typography>
         <Box

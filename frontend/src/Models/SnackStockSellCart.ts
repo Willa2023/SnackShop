@@ -42,4 +42,5 @@ export interface CartItem {
   snackId: number;
   quantity: number;
   snack: Snack;
+  checked?: boolean;
 }
