@@ -23,6 +23,7 @@ builder.Services.AddSqlite<SnackShopContext>("Data Source=snackshop.db");
 builder.Services.AddScoped<ISnackRepository, SnackRepository>();
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ISellRepository, SellRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 
 builder.Services.AddCors(options =>
 {

@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 import { Cart, Snack } from '../Models/SnackStockSellCart';
 import { getSnacks } from '../Services/SnackService';
+import { createCart } from '../Services/CartService';
 
 interface SettingsContextProps {
   snacks: Snack[];
@@ -84,6 +85,20 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
     };
     fetchRoles();
   }, [isAuthenticated, getIdTokenClaims]);
+
+  const createNewCart = async (cart: Cart) => {
+    try {
+      await createCart(cart);
+    } catch (error) {
+      console.error('Failed to create cart:', error);
+    }
+  };
+
+  useEffect(() => {
+    if (isAuthenticated && cart.cartItems.length > 0) {
+      createNewCart(cart);
+    }
+  }, [cart, isAuthenticated]);
 
   const toggleDrawer = () => {
     setDrawerOpen(!isDrawerOpen);

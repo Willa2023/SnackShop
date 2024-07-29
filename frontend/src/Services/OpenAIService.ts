@@ -20,7 +20,7 @@ export const getAdvice = async (
   const requestBody = { question, stocks: simplifiedStocks };
   console.log('Request body:', JSON.stringify(requestBody));
 
-  const response = await fetch('http://localhost:5136/api/OpenAI', {
+  const response = await fetch(openaiApiUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

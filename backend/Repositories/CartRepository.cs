@@ -11,24 +11,9 @@ public class CartRepository : ICartRepository
         _context = context;
     }
 
-    public async Task AddCartAsync(Cart cart)
+    public async Task CreateCartAsync(Cart cart)
     {
         _context.Carts.Add(cart);
         await _context.SaveChangesAsync();
-    }
-
-    public Task AddCartItemAsync(CartItem cartItem)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task DeleteCartAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task DeleteCartItemAsync(int id)
-    {
-        throw new NotImplementedException();
     }
 }

@@ -17,11 +17,11 @@ namespace backend.Controllers
         }
 
         // POST: api/Cart/AddCart
-        [HttpPost("AddCart")]
+        [HttpPost("CreateCart")]
         public async Task<ActionResult<Cart>> AddCart(Cart cart)
         {
-            await _cartRepository.AddCartAsync(cart);
-            return CreatedAtAction("AddCart", new { id = cart.Id }, cart);
+            await _cartRepository.CreateCartAsync(cart);
+            return CreatedAtAction("CreateCart", new { id = cart.Id }, cart);
         }
 
     }

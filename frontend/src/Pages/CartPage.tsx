@@ -3,25 +3,23 @@ import { Container, Typography, Box, Grid, Button } from '@mui/material';
 import CartCard from '../Components/CartCard';
 import { useSettings } from '../Contexts/SettingsContext';
 import CheckOutForm from '../Components/Forms/CheckOutForm';
-
-// interface CartPageProps {
-//   cart: Cart;
-// }
+import { CartItem } from '../Models/SnackStockSellCart';
+import { createSell } from '../Services/SellService';
 
 const CartPage: React.FC = () => {
-  const { cart, setCart } = useSettings();
+  const { cart } = useSettings();
   const [checkOutPrice, setCheckOutPrice] = useState(0);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [checkCartItems, setCheckCartItems] = useState([] as CartItem[]);
 
   const calculatePrice = () => {
-    var totalPrice = 0;
-
-    cart.cartItems.map((item) => {
-      if (item.checked) {
-        totalPrice += item.quantity * item.snack.sellPrice;
-      }
+    let totalPrice = 0;
+    const checkItems = cart.cartItems.filter((item) => item.checked);
+    checkItems.forEach((item) => {
+      totalPrice += item.quantity * item.snack.sellPrice;
     });
     setCheckOutPrice(parseFloat(totalPrice.toFixed(2)));
+    setCheckCartItems(checkItems);
   };
 
   useEffect(() => {
@@ -29,6 +27,20 @@ const CartPage: React.FC = () => {
   }, [cart]);
 
   const submitCheck = async () => {
+    if (checkCartItems.length !== 0) {
+      try {
+        await Promise.all(
+          checkCartItems.map(async (item) => {
+            await createSell(item.snackId, item.quantity);
+          }),
+        );
+        console.log('Items checked out successfully.');
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      alert('Please select items to check out.');
+    }
     setIsFormOpen(false);
   };
 
@@ -73,7 +85,7 @@ const CartPage: React.FC = () => {
           <CheckOutForm
             open={isFormOpen}
             onClose={() => setIsFormOpen(false)}
-            submitCheck={submitCheck}
+            submitCheck={() => submitCheck()}
             price={checkOutPrice}
           />
         </Grid>

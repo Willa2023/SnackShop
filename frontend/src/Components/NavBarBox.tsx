@@ -39,7 +39,7 @@ const NavBarBox: React.FC = () => {
             <HomeIcon />
             Home
           </Button>
-          {isAuthenticated && (
+          {!roles.includes('Admin') && (
             <Button
               component={NavLink}
               to="/cart"
