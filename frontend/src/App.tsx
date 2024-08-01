@@ -13,9 +13,12 @@ import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import AISuggestionPage from './Pages/AISuggestionPage';
 import NoPermissionPage from './Pages/NoPermissionPage';
 import PrivateRoute from './Components/PrivateRoute';
+import { UserInfoContextProvider } from './Contexts/UserInfoContext';
+import { SnacksProvider } from './Contexts/SnacksContext';
+import { CartProvider } from './Contexts/CartContext';
 
 const AppContent: React.FC = () => {
-  const { isDarkTheme, cart } = useSettings();
+  const { isDarkTheme } = useSettings();
 
   const theme = createTheme({
     palette: {
@@ -44,7 +47,7 @@ const AppContent: React.FC = () => {
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<CartPage cart={cart} />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/nopermission" element={<NoPermissionPage />} />
           <Route element={<PrivateRoute requiredRoles={['Admin']} />}>
@@ -62,9 +65,15 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <SettingsProvider>
-      <Router>
-        <AppContent />
-      </Router>
+      <SnacksProvider>
+        <UserInfoContextProvider>
+          <CartProvider>
+            <Router>
+              <AppContent />
+            </Router>
+          </CartProvider>
+        </UserInfoContextProvider>
+      </SnacksProvider>
     </SettingsProvider>
   );
 };

@@ -10,7 +10,7 @@ import {
 import { CartItem } from '../Models/SnackStockSellCart';
 import { useState } from 'react';
 import { Add, Remove } from '@mui/icons-material';
-import { useSettings } from '../Contexts/SettingsContext';
+import { useCart } from '../Contexts/CartContext';
 
 interface CartCardProps {
   cartItem: CartItem;
@@ -20,7 +20,7 @@ const CartCard: React.FC<CartCardProps> = ({ cartItem }) => {
   //   const [checked, setChecked] = useState([1]);
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const [quantity, setQuantity] = useState(cartItem.quantity);
-  const { cart, setCart } = useSettings();
+  const { cart, setCart } = useCart();
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const updatedCartItems = cart.cartItems.map((item) =>

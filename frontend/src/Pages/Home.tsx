@@ -4,11 +4,11 @@ import SnackCard from '../Components/SnackCard';
 import { Snack } from '../Models/SnackStockSellCart';
 import { getSnacks } from '../Services/SnackService';
 import { CartItem } from '../Models/SnackStockSellCart';
-import { useSettings } from '../Contexts/SettingsContext';
+import { useCart } from '../Contexts/CartContext';
 
 const Home: React.FC = () => {
   const [snacks, setSnacks] = useState<Snack[]>([]);
-  const { cart, setCart } = useSettings();
+  const { cart, setCart } = useCart();
 
   const fetchSnacks = async () => {
     const data = await getSnacks();

@@ -11,9 +11,11 @@ import { NavLink } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { ShoppingCart } from '@mui/icons-material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import { useUserInfo } from '../Contexts/UserInfoContext';
 
 const NavBarBox: React.FC = () => {
-  const { toggleDrawer, roles } = useSettings();
+  const { toggleDrawer } = useSettings();
+  const { roles } = useUserInfo();
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   return (
@@ -39,17 +41,15 @@ const NavBarBox: React.FC = () => {
             <HomeIcon />
             Home
           </Button>
-          {!roles.includes('Admin') && (
-            <Button
-              component={NavLink}
-              to="/cart"
-              color="inherit"
-              style={{ paddingRight: '30px' }}
-            >
-              <ShoppingCart />
-              Cart
-            </Button>
-          )}
+          <Button
+            component={NavLink}
+            to="/cart"
+            color="inherit"
+            style={{ paddingRight: '30px' }}
+          >
+            <ShoppingCart />
+            Cart
+          </Button>
           {roles.includes('Admin') && (
             <>
               <Button

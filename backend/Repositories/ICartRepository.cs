@@ -5,6 +5,8 @@ namespace backend.Repositories
 {
     public interface ICartRepository
     {
-        Task CreateCartAsync(Cart cart);
+        Task AddCartAsync(Cart cart);
+        Task UpdateCartAsync(Cart cart);
+        Task<Cart?> GetCartByUserIdAsync(string userId);
     }
 }

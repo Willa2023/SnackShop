@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Typography, Box, Grid, Button } from '@mui/material';
 import CartCard from '../Components/CartCard';
-import { useSettings } from '../Contexts/SettingsContext';
 import CheckOutForm from '../Components/Forms/CheckOutForm';
 import { CartItem } from '../Models/SnackStockSellCart';
 import { createSell } from '../Services/SellService';
+import { useCart } from '../Contexts/CartContext';
 
 const CartPage: React.FC = () => {
-  const { cart } = useSettings();
+  const { cart } = useCart();
   const [checkOutPrice, setCheckOutPrice] = useState(0);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [checkCartItems, setCheckCartItems] = useState([] as CartItem[]);

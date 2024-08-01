@@ -10,7 +10,6 @@ import {
   Box,
   Typography,
 } from '@mui/material';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { NavLink } from 'react-router-dom';
 import { useSettings } from '../Contexts/SettingsContext';
