@@ -5,18 +5,23 @@ import CheckOutForm from '../Components/Forms/CheckOutForm';
 import { CartItem } from '../Models/SnackStockSellCart';
 import { createSell } from '../Services/SellService';
 import { useCart } from '../Contexts/CartContext';
+import { useSnacks } from '../Contexts/SnacksContext';
 
 const CartPage: React.FC = () => {
-  const { cart } = useCart();
+  const { cartItems } = useCart();
+  const { snacks } = useSnacks();
   const [checkOutPrice, setCheckOutPrice] = useState(0);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [checkCartItems, setCheckCartItems] = useState([] as CartItem[]);
 
   const calculatePrice = () => {
     let totalPrice = 0;
-    const checkItems = cart.cartItems.filter((item) => item.checked);
+    const checkItems = cartItems.filter((item) => item.checked);
     checkItems.forEach((item) => {
-      totalPrice += item.quantity * item.snack.sellPrice;
+      const snack = snacks.find((s) => s.id === item.snackId);
+      if (snack) {
+        totalPrice += item.quantity * snack.sellPrice;
+      }
     });
     setCheckOutPrice(parseFloat(totalPrice.toFixed(2)));
     setCheckCartItems(checkItems);
@@ -24,7 +29,7 @@ const CartPage: React.FC = () => {
 
   useEffect(() => {
     calculatePrice();
-  }, [cart]);
+  }, [cartItems]);
 
   const submitCheck = async () => {
     if (checkCartItems.length !== 0) {
@@ -56,7 +61,7 @@ const CartPage: React.FC = () => {
         <Typography variant="h6" gutterBottom>
           Shopping Cart
         </Typography>
-        {cart.cartItems.length === 0 ? (
+        {cartItems.length === 0 ? (
           <Typography>No items in the cart.</Typography>
         ) : (
           <Grid
@@ -64,7 +69,7 @@ const CartPage: React.FC = () => {
             rowSpacing={{ xs: 1, sm: 2, md: 3 }}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           >
-            {cart.cartItems.map((item) => (
+            {cartItems.map((item) => (
               <Grid item xs={12} sm={12} md={12} key={item.id}>
                 <CartCard cartItem={item} />
               </Grid>

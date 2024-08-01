@@ -1,44 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Container, Typography, Box, Grid } from '@mui/material';
 import SnackCard from '../Components/SnackCard';
-import { Snack } from '../Models/SnackStockSellCart';
-import { getSnacks } from '../Services/SnackService';
-import { CartItem } from '../Models/SnackStockSellCart';
-import { useCart } from '../Contexts/CartContext';
+import { useSnacks } from '../Contexts/SnacksContext';
 
 const Home: React.FC = () => {
-  const [snacks, setSnacks] = useState<Snack[]>([]);
-  const { cart, setCart } = useCart();
-
-  const fetchSnacks = async () => {
-    const data = await getSnacks();
-    setSnacks(data);
-  };
-  useEffect(() => {
-    fetchSnacks();
-  }, []);
-
-  const handleAddToCart = (snackId: number, quantity: number) => {
-    const existingItem = cart.cartItems.find(
-      (item) => item.snackId === snackId,
-    );
-    if (existingItem) {
-      const updatedCartItems = cart.cartItems.map((item) =>
-        item.snackId === snackId
-          ? { ...item, quantity: item.quantity + quantity }
-          : item,
-      );
-      setCart({ ...cart, cartItems: updatedCartItems });
-    } else {
-      const newCartItem: CartItem = {
-        id: Date.now(),
-        snackId: snackId,
-        quantity: quantity,
-        snack: snacks.find((snack) => snack.id === snackId) as Snack,
-      };
-      setCart({ ...cart, cartItems: [...cart.cartItems, newCartItem] });
-    }
-  };
+  const { snacks } = useSnacks();
 
   return (
     <Container
@@ -65,7 +31,6 @@ const Home: React.FC = () => {
               name={snack.name}
               price={snack.sellPrice}
               image={snack.image}
-              onAddToCart={handleAddToCart}
             />
           </Grid>
         ))}

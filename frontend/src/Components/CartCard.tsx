@@ -1,34 +1,32 @@
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Checkbox,
-  Grid,
-  IconButton,
-} from '@mui/material';
+import { Card, CardContent, Checkbox, Grid, IconButton } from '@mui/material';
 import { CartItem } from '../Models/SnackStockSellCart';
 import { useState } from 'react';
 import { Add, Remove } from '@mui/icons-material';
 import { useCart } from '../Contexts/CartContext';
+import { useSnacks } from '../Contexts/SnacksContext';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useUserInfo } from '../Contexts/UserInfoContext';
+// import { deleteCartItemFromDb } from '../Services/CartService';
 
 interface CartCardProps {
   cartItem: CartItem;
 }
 
 const CartCard: React.FC<CartCardProps> = ({ cartItem }) => {
-  //   const [checked, setChecked] = useState([1]);
+  const { userId } = useUserInfo();
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const [quantity, setQuantity] = useState(cartItem.quantity);
-  const { cart, setCart } = useCart();
+  const { cartItems, setCartItems, deleteCartItem } = useCart();
+  const { snacks } = useSnacks();
+  const snack = snacks.find((s) => s.id === cartItem.snackId);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const updatedCartItems = cart.cartItems.map((item) =>
+    const updatedCartItems = cartItems.map((item) =>
       item.snackId === cartItem.snackId
         ? { ...item, checked: event.target.checked }
         : item,
     );
-    setCart({ ...cart, cartItems: updatedCartItems });
+    setCartItems(updatedCartItems);
   };
 
   const handleAdd = () => {
@@ -44,12 +42,17 @@ const CartCard: React.FC<CartCardProps> = ({ cartItem }) => {
     }
   };
   const updateCart = (newQuantity: number) => {
-    const updatedCartItems = cart.cartItems.map((item) =>
+    const updatedCartItems = cartItems.map((item) =>
       item.snackId === cartItem.snackId
         ? { ...item, quantity: newQuantity }
         : item,
     );
-    setCart({ ...cart, cartItems: updatedCartItems });
+    setCartItems(updatedCartItems);
+  };
+  const handleDeleteCartItem = async () => {
+    if (userId) {
+      await deleteCartItem(userId, cartItem.snackId);
+    }
   };
 
   return (
@@ -72,11 +75,11 @@ const CartCard: React.FC<CartCardProps> = ({ cartItem }) => {
             onChange={handleCheckboxChange}
           />
         </Grid>
-        <Grid item xs={5}>
-          <CardContent>{cartItem.snack.name}</CardContent>
+        <Grid item xs={4}>
+          <CardContent>{snack ? snack.name : null}</CardContent>
         </Grid>
         <Grid item xs={3}>
-          <CardContent>{cartItem.snack.sellPrice}</CardContent>
+          <CardContent>{snack ? snack.sellPrice : null}</CardContent>
         </Grid>
         <Grid item xs={3}>
           <CardContent>
@@ -88,6 +91,11 @@ const CartCard: React.FC<CartCardProps> = ({ cartItem }) => {
               <Add />
             </IconButton>
           </CardContent>
+        </Grid>
+        <Grid item xs={1}>
+          <IconButton onClick={handleDeleteCartItem}>
+            <DeleteIcon style={{ color: 'red' }} />
+          </IconButton>
         </Grid>
       </Grid>
     </Card>

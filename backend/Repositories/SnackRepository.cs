@@ -50,12 +50,6 @@ namespace backend.Repositories
             return await _context.Snacks.AnyAsync(e => e.Id == id);
         }
 
-        public async Task BulkAddSnacksAsync(IEnumerable<Snack> snacks)
-        {
-            await _context.Snacks.AddRangeAsync(snacks);
-            await _context.SaveChangesAsync();
-        }
-
 
     }
 }

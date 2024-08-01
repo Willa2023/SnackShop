@@ -11,20 +11,10 @@ import { deleteSnack, updateSnack } from '../../Services/SnackService';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { useSnacks } from '../../Contexts/SnacksContext';
 
-interface SnackDataGridProps {
-  snacks: Snack[];
-  setSnacks: React.Dispatch<React.SetStateAction<Snack[]>>;
-  loading: boolean;
-  error: string | null;
-}
-
-const SnackDataGrid: React.FC<SnackDataGridProps> = ({
-  snacks,
-  setSnacks,
-  loading,
-  error,
-}) => {
+const SnackDataGrid: React.FC = () => {
+  const { snacks, setSnacks } = useSnacks();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const [columnVisibilityModel, setColumnVisibilityModel] = useState({
@@ -127,9 +117,6 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
 
   return (
     <div style={{ height: '70vh', width: '100%' }}>
-      {error && (
-        <div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>
-      )}
       <DataGrid
         rows={rows}
         columns={columns}
@@ -140,7 +127,6 @@ const SnackDataGrid: React.FC<SnackDataGridProps> = ({
         pageSizeOptions={[5, 10, 20]}
         pagination
         paginationMode="client"
-        loading={loading}
         disableColumnMenu={isSmallScreen}
         autoHeight
         sx={{

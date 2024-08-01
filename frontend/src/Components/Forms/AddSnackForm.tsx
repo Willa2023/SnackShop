@@ -6,26 +6,22 @@ import {
   DialogTitle,
   TextField,
 } from '@mui/material';
-import { Snack } from '../../Models/SnackStockSellCart';
+import { useSnacks } from '../../Contexts/SnacksContext';
 
 interface AddSnackFormProps {
   open: boolean;
   onClose: () => void;
-  onAddSnack: (snack: Omit<Snack, 'id'>) => void;
 }
 
-const AddSnackForm: React.FC<AddSnackFormProps> = ({
-  open,
-  onClose,
-  onAddSnack,
-}) => {
+const AddSnackForm: React.FC<AddSnackFormProps> = ({ open, onClose }) => {
   const [name, setName] = useState<string>('');
   const [costPrice, setCostPrice] = useState<number>(0);
   const [sellPrice, setSellPrice] = useState<number>(0);
   const [brand, setBrand] = useState<string>('');
+  const { addSnack } = useSnacks();
 
   const handleSubmit = () => {
-    onAddSnack({
+    addSnack({
       name: name,
       costPrice: costPrice,
       sellPrice: sellPrice,

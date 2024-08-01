@@ -31,16 +31,10 @@ export interface Sell {
   profit: number;
 }
 
-export interface Cart {
-  id: number;
-  userId: string;
-  cartItems: CartItem[];
-}
-
 export interface CartItem {
   id: number;
+  userId: string;
   snackId: number;
   quantity: number;
-  snack: Snack;
-  checked?: boolean;
+  checked: boolean;
 }

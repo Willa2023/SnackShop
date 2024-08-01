@@ -9,22 +9,20 @@ import {
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
+import { useCart } from '../Contexts/CartContext';
+import { useUserInfo } from '../Contexts/UserInfoContext';
 
 interface SnackCardProps {
   id: number;
   name: string;
   price: number;
   image: string;
-  onAddToCart: (id: number, quantity: number, checked: boolean) => void;
 }
 
-const SnackCard: React.FC<SnackCardProps> = ({
-  id,
-  name,
-  price,
-  image,
-  onAddToCart,
-}) => {
+const SnackCard: React.FC<SnackCardProps> = ({ id, name, price, image }) => {
+  const { addCartItem: addToCart } = useCart();
+  const { userId } = useUserInfo();
+
   const [quantity, setQuantity] = useState(1);
   const handleAdd = () => {
     setQuantity(quantity + 1);
@@ -35,7 +33,15 @@ const SnackCard: React.FC<SnackCardProps> = ({
     }
   };
   const handleAddToCart = () => {
-    onAddToCart(id, quantity, true);
+    if (userId) {
+      var cartItem = {
+        userId: userId,
+        snackId: id,
+        quantity: quantity,
+        checked: false,
+      };
+      addToCart(cartItem);
+    }
   };
 
   return (

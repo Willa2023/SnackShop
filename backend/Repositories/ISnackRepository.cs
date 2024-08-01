@@ -10,6 +10,5 @@ namespace backend.Repositories
         Task UpdateSnackAsync(Snack snack);
         Task DeleteSnackAsync(int id);
         Task<bool> SnackExistsAsync(int id);
-        Task BulkAddSnacksAsync(IEnumerable<Snack> snack);
     }
 }
