@@ -53,14 +53,26 @@ namespace backend.Controllers
 
         // PUT: api/CartItem/{Id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutItem(int id, CartItem cartItem)
+        public async Task<IActionResult> PutItem(int id, [FromBody] CartItemUpdateDto updateDto)
         {
-            if (id != cartItem.Id)
+            var cartItem = await _cartItemRepository.GetCartItemByIdAsync(id);
+            if (cartItem == null)
             {
-                return BadRequest();
+                return NotFound();
             }
+            cartItem.Quantity = updateDto.Quantity;
+            cartItem.Checked = updateDto.Checked;
             await _cartItemRepository.UpdateCartItemAsync(cartItem);
             return NoContent();
+        }
+
+        public class CartItemUpdateDto
+        {
+            public int Id { get; set; }
+            public int Quantity { get; set; }
+
+            public Boolean Checked { get; set; }
+
         }
 
         // Delete: api/CartItem/{userId}

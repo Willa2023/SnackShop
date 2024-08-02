@@ -33,13 +33,17 @@ export const addCartItemToDb = async (
   return data;
 };
 
-export const updateCartItemInDb = async (cartItem: CartItem): Promise<void> => {
-  await fetch(`${cartApiUrl}/${cartItem.id}`, {
+export const updateCartItemInDb = async (
+  id: number,
+  quantity: number,
+  checked: boolean,
+): Promise<void> => {
+  await fetch(`${cartApiUrl}/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(cartItem),
+    body: JSON.stringify({ id, quantity, checked }),
   });
 };
 

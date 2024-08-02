@@ -11,6 +11,7 @@ import {
   addCartItemToDb,
   deleteCartItemFromDb,
   getCartItemsByUserId,
+  updateCartItemInDb,
 } from '../Services/CartService';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -19,6 +20,7 @@ interface CartContextProps {
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   addCartItem: (cartItem: Omit<CartItem, 'id'>) => void;
   deleteCartItem: (userId: string, snackId: number) => void;
+  updateCartItem: (id: number, quantity: number, checked: boolean) => void;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
@@ -50,8 +52,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   const addCartItem = async (cartItem: Omit<CartItem, 'id'>) => {
     if (userId) {
       try {
-        const newCartItem = await addCartItemToDb(cartItem);
-        setCartItems((prev) => [...prev, newCartItem]);
+        await addCartItemToDb(cartItem);
         fetchCartItems();
       } catch (error) {
         console.log('Failed to add cart item', error);
@@ -66,14 +67,24 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   const deleteCartItem = async (userId: string, snackId: number) => {
     try {
       await deleteCartItemFromDb(userId, snackId);
-      setCartItems((prev) => prev.filter((item) => item.snackId !== snackId));
       fetchCartItems();
     } catch (error) {
       console.log('Failed to delete cart item', error);
     }
   };
 
-  const updateCartItem = async (cartItem: CartItem) => {};
+  const updateCartItem = async (
+    id: number,
+    quantity: number,
+    checked: boolean,
+  ) => {
+    try {
+      await updateCartItemInDb(id, quantity, checked);
+      fetchCartItems();
+    } catch (error) {
+      console.log('Failed to update cart item', error);
+    }
+  };
 
   return (
     <CartContext.Provider
@@ -82,6 +93,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         setCartItems,
         addCartItem,
         deleteCartItem,
+        updateCartItem,
       }}
     >
       {children}
