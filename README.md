@@ -42,11 +42,10 @@ Admins have full access to all features available to normal users and can also m
 <img height="200" alt="Introduction9" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction9.png?raw=true">
 </p>
 
-<p>
-<img height="315" alt="Introduction10" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction10.png?raw=true">
-<img height="315" alt="Introduction11" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction11.png?raw=true">
-<img height="315" alt="Introduction12" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction12.png?raw=true">
-</p>
+<img width="1496" alt="Introduction10" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction10.png?raw=true">
+<img width="1496" alt="Introduction11" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction11.png?raw=true">
+<img width="1496" alt="Introduction12" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction12.png?raw=true">
+
 
 
 
