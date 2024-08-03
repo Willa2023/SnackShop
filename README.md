@@ -30,16 +30,16 @@ These users can purchase snacks. When they log out, the items in their cart are 
 When user pay for snack items, it will generate a sell history for each snack, sell information will be updated in database.
 
 <p>
-<img height="200" alt="Introduction6" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction6.png?raw=true">
-<img height="200" alt="Introduction7" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction7.png?raw=true">
+<img height="150" alt="Introduction6" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction6.png?raw=true">
+<img height="150" alt="Introduction7" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction7.png?raw=true">
 </p>
 
 #### 3.Admin (Shop Manager)
 Admins have full access to all features available to normal users and can also manage snacks, stocks, track sales, generate charts based on current data for clear insights, and request AI assistance for stock quantity advice.
 
 <p>
-<img height="350" alt="Introduction8" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction8.png?raw=true">
-<img height="350" alt="Introduction9" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction9.png?raw=true">
+<img height="200" alt="Introduction8" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction8.png?raw=true">
+<img height="200" alt="Introduction9" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction9.png?raw=true">
 </p>
 
 <p>
