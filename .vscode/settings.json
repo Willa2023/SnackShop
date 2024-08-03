@@ -1,2 +1,4 @@
 {
+    "appService.defaultWebAppToDeploy": "/subscriptions/2737e5a5-5605-48d3-80cd-08a51caa13d9/resourceGroups/snackshop-repository/providers/Microsoft.Web/sites/snackshop-backend",
+    "appService.deploySubpath": "backend"
 }
