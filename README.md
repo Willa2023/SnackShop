@@ -14,8 +14,10 @@ SnackShop is a responsive web application designed to facilitate snack viewing, 
 #### Unlogged Users
 These users can view snacks and toggle between dark and light themes on the website. If user doesn’t have an account, they can  sign up using email and password or login through Google Account.
 
+<p>
 <img width="300" alt="Introduction1" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction1.png?raw=true">
 <img width="300" alt="Introduction2" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction2.png?raw=true">
+  </p>
 <img width="748" alt="Introduction3" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction3.png?raw=true">
 
 
