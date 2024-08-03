@@ -20,9 +20,9 @@ These users can view snacks and toggle between dark and light themes on the webs
 </p>
 
 <p>
-<img height="200" alt="Introduction3" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction3.png?raw=true">
-<img height="200" alt="Introduction4" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction4.png?raw=true">
-<img height="200" alt="Introduction5" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction5.png?raw=true">
+<img height="300" alt="Introduction3" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction3.png?raw=true">
+<img height="300" alt="Introduction4" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction4.png?raw=true">
+<img height="300" alt="Introduction5" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction5.png?raw=true">
 </p>
 
 #### 2.Logged-In Normal User
