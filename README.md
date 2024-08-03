@@ -2,6 +2,8 @@
 ### Updated on 2024-08-03: Deploy Frontend to Azure 
 [More Change Logs](https://github.com/Willa2023/SnackShop/wiki/Change-Logs)
 
+Video Demo: https://youtu.be/2rgoiBNajuI
+
 Backend Stack：C#, .NET, EFCore, MVC, REST API, OpenAI (Betalgo.OpenAI Library for .NET)
 
 Frontend Stack：Typescript, React, MUI Library, Chart.js
