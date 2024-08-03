@@ -38,14 +38,14 @@ When user pay for snack items, it will generate a sell history for each snack, s
 Admins have full access to all features available to normal users and can also manage snacks, stocks, track sales, generate charts based on current data for clear insights, and request AI assistance for stock quantity advice.
 
 <p>
-<img height="230" alt="Introduction8" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction8.png?raw=true">
-<img height="230" alt="Introduction9" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction9.png?raw=true">
+<img height="250" alt="Introduction8" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction8.png?raw=true">
+<img height="250" alt="Introduction9" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction9.png?raw=true">
 </p>
 
 <p>
-<img height="200" alt="Introduction10" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction10.png?raw=true">
-<img height="200" alt="Introduction11" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction11.png?raw=true">
-<img height="200" alt="Introduction12" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction12.png?raw=true">
+<img height="220" alt="Introduction10" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction10.png?raw=true">
+<img height="220" alt="Introduction11" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction11.png?raw=true">
+<img height="220" alt="Introduction12" src="https://github.com/Willa2023/SnackShop/blob/main/frontend/public/IntroImage/Introduction12.png?raw=true">
 </p>
 
 
