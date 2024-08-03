@@ -8,7 +8,7 @@ import { useCart } from '../Contexts/CartContext';
 import { useSnacks } from '../Contexts/SnacksContext';
 
 const CartPage: React.FC = () => {
-  const { cartItems } = useCart();
+  const { cartItems, deleteCartItem } = useCart();
   const { snacks } = useSnacks();
   const [checkOutPrice, setCheckOutPrice] = useState(0);
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -37,6 +37,7 @@ const CartPage: React.FC = () => {
         await Promise.all(
           checkCartItems.map(async (item) => {
             await createSell(item.snackId, item.quantity);
+            await deleteCartItem(item.userId, item.snackId);
           }),
         );
         console.log('Items checked out successfully.');

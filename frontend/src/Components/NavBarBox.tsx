@@ -41,15 +41,17 @@ const NavBarBox: React.FC = () => {
             <HomeIcon />
             Home
           </Button>
-          <Button
-            component={NavLink}
-            to="/cart"
-            color="inherit"
-            style={{ paddingRight: '30px' }}
-          >
-            <ShoppingCart />
-            Cart
-          </Button>
+          {isAuthenticated && (
+            <Button
+              component={NavLink}
+              to="/cart"
+              color="inherit"
+              style={{ paddingRight: '30px' }}
+            >
+              <ShoppingCart />
+              Cart
+            </Button>
+          )}
           {roles.includes('Admin') && (
             <>
               <Button
